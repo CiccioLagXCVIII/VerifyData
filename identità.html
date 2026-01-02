@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progetto - Form 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <h5 class="mb-0"><i class="bi bi-layers-half me-2"></i> Icona E Titolo</h5>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <i class="bi bi-house-door"></i> <span>Presentazione</span>
+                </a>
+                <a href="identità.html" class="nav-link active">
+                    <i class="bi bi-file-earmark-text"></i> <span>Identità</span>
+                </a>
+                <a href="caricamentoDocumenti.html" class="nav-link">
+                    <i class="bi bi-file-earmark-text"></i> <span>Caricamento Documenti</span>
+                </a>
+                <a href="verificaDocumento.html" class="nav-link">
+                    <i class="bi bi-file-earmark-code"></i> <span>Verifica Documento</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="https://github.com/CiccioLagXCVIII" class="github-link">
+                    <i class="bi bi-github me-2"></i> <span>GitHub</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="custom-card">
+                <h2 class="mb-4" class="mb-4 text-center">Richiedi Identità</h2>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" placeholder="Mario">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cognome</label>
+                        <input type="text" class="form-control" placeholder="Rossi">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Indirizzo Email</label>
+                        <input type="email" class="form-control" placeholder="name@example.com">
+                    </div>
+                    <button type="submit" class="btn btn-primary px-4">Invia Dati</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

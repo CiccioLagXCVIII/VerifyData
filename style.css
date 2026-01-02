@@ -1,0 +1,249 @@
+/* ==================== Stile Condiviso Per Tutte Le Pagine ==================== */
+:root {
+    --bg-dark: #121212;
+    --sidebar-bg: #181818;
+    --border-color: #2d2d2d;
+    --accent-color: #0d6efd;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Evita lo scroll dell'intera pagina */
+}
+
+/* ==================== Sidebar (Navbar Laterale) ==================== */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.sidebar .nav-link {
+    color: var(--text-muted);
+    padding: 12px 25px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .nav-link i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+}
+
+.sidebar .nav-link:hover {
+    color: white;
+    background-color: #252525;
+}
+
+.sidebar .nav-link.active {
+    color: white;
+    background-color: #2d2d2d;
+    border-left-color: var(--accent-color);
+}
+
+.sidebar-footer {
+    padding: 20px 25px;
+    border-top: 1px solid var(--border-color);
+}
+
+.github-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.github-link:hover { color: white; }
+
+/* ==================== Form, Input E Bottoni ==================== */
+.custom-card {
+    background-color: #1e1e1e;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 800px;
+    width: 100%;
+}
+
+h2 #form-title {
+    color: white;
+    font-weight: 600;
+    align-self: center;
+}
+
+.form-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+
+
+.form-control, .form-select {
+    background-color: #252525 !important;
+    border: 1px solid #444 !important;
+    color: white !important;
+}
+
+.form-control:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15) !important;
+}
+
+@media (max-width: 768px) {
+    .sidebar { width: 70px; }
+    .sidebar span { display: none; }
+    .sidebar .nav-link { justify-content: center; padding: 15px 0; }
+    .sidebar .nav-link i { margin: 0; }
+}
+
+/* ==================== Homepage (index.html) ==================== */
+.app-header {
+    height: 60px;
+    background-color: var(--bg-dark);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+.main-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.content-area {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: var(--bg-dark);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================== Form Caricamento Documenti ==================== */
+
+.upload-area {
+    background-color: #1a1a1a; 
+    border: 2px dashed #444; 
+    border-radius: 12px;
+    padding: 50px 20px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: #adb5bd;
+}
+
+.upload-area:hover, 
+.upload-area.drag-over {
+    background-color: #252525;
+    border-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.upload-area i {
+    color: #6c757d;
+    margin-bottom: 15px;
+    display: block;
+    transition: color 0.3s;
+}
+
+.upload-area:hover i, 
+.upload-area.drag-over i {
+    color: var(--accent-color);
+}
+
+#upload-link {
+    color: var(--accent-color); 
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#file-info {
+    display: none;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #198754;
+    color: #fff;
+    animation: fadeIn 0.4s ease-out;
+}
+
+#file-info strong {
+    color: #adb5bd;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.hash-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: #000;
+    border: 1px solid #444;
+    border-radius: 6px;
+}
+
+#file-hash {
+    font-size: 0.85rem;
+    word-break: break-all;
+    flex-grow: 1;
+}
+
+.copy-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #198754;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease-in-out;
+}
+
+.copy-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
