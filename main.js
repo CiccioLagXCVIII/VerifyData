@@ -63,7 +63,6 @@ async function handleFile(file) {
       }
 }
 
-// Aggiungi questa riga che mancava!
 const copyBtn = document.getElementById('copy-btn'); 
 const copyToast = document.getElementById('copy-toast');
 
