@@ -1,89 +1,126 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progetto - Home</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="Style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Progetto - Home</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="Style.css">
+    </head>
+    <body>
 
-    <header class="app-header">
-        <h5 class="mb-0"><i class="bi bi-layers-half me-2"></i> Icona E Titolo</h5>
-    </header>
+        <header class="app-header d-flex justify-content-between align-items-center px-4">
+            <h5 class="mb-0 text-white">
+                <i class="bi bi-layers-half me-2 text-primary"></i>VerifyData
+            </h5>
+            <!-- Pulsante Accesso a destra -->
+            <a href="connessione.html" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                <i class="bi bi-wallet-fill"></i> Connetti Wallet
+            </a>
+        </header>
 
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link active">
-                    <i class="bi bi-house-door"></i> <span>Presentazione</span>
-                </a>
-                <a href="profilo.html" class="nav-link">
-                    <i class="bi bi-file-earmark-text"></i> <span>Profilo</span>
-                </a>
-                <a href="caricamentoDocumenti.html" class="nav-link">
-                    <i class="bi bi-file-earmark-text"></i> <span>Caricamento Documenti</span>
-                </a>
-                <a href="verificaDocumento.html" class="nav-link">
-                    <i class="bi bi-file-earmark-code"></i> <span>Verifica Documento</span>
-                </a>
-            </nav>
+        <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link active">
+                        <i class="bi bi-house-door"></i> <span>Presentazione</span>
+                    </a>
+                    <a href="profilo.html" class="nav-link">
+                        <i class="bi bi-person-vcard"></i> <span>Profilo SSI</span>
+                    </a>
+                    <a href="certifica.html" class="nav-link">
+                        <i class="bi bi-shield-check"></i> <span>Certifica Documento</span>
+                    </a>
+                    <a href="verifica.html" class="nav-link">
+                        <i class="bi bi-search"></i> <span>Verifica Pubblica</span>
+                    </a>
+                </nav>
 
-            <div class="sidebar-footer">
-                <a href="https://github.com/CiccioLagXCVIII" class="github-link">
-                    <i class="bi bi-github me-2"></i> <span>GitHub</span>
-                </a>
-            </div>
-        </aside>
-
-        <!-- Contenuto Centrale -->
-        <main class="content-area">
-            <div class="custom-card">
-                <!-- Intestazione Assignment -->
-                <div class="mb-4">
-                    <span class="badge bg-primary mb-2">Tesina DSBC</span>
-                    <h1 class="display-6 fw-bold">Interazione Smart Contract</h1>
-                    <p class="text-secondary">Corso di Data Security And Blockchain (A.A. 2025/2026)</p>
+                <div class="sidebar-footer">
+                    <a href="https://github.com/CiccioLagXCVIII" target="_blank" class="github-link">
+                        <i class="bi bi-github me-2"></i> <span>GitHub Project</span>
+                    </a>
                 </div>
-                
-                <hr class="border-secondary mb-4">
+            </aside>
 
-                <!-- Descrizione -->
-                <div class="row g-4">
-                    <div class="col-md-7">
-                        <h5 class="text-white">Descrizione Progetto</h5>
-                        <p class="text-secondary">
-                            Questa applicazione permette di interagire con la blockchain tramite due moduli principali:
-                        </p>
-                        <ul class="text-secondary small">
-                            <li><strong>Interact Form:</strong> Lettura e chiamata di funzioni esistenti</li>
-                            <li><strong>Mint Form:</strong> Generazione di nuovi asset digitali (Minting)</li>
-                        </ul>
+            <!-- Contenuto Centrale -->
+            <main class="content-area">
+                <div class="custom-card">
+                    <!-- Intestazione Progetto -->
+                    <div class="mb-4 text-center">
+                        <span class="badge bg-primary px-3 py-2 mb-2 rounded-pill">Data Security & Blockchain Project</span>
+                        <h1 class="display-5 fw-bold text-white">VerifyData</h1>
+                        <p class="lead text-secondary">Notarizzazione Digitale e Identità Sovrana su Ethereum</p>
                     </div>
+                    
+                    <hr class="border-secondary mb-5">
 
-                    <!-- Info Studente -->
-                    <div class="col-md-5">
-                        <div class="p-3 rounded bg-dark border border-secondary">
-                            <h6 class="text-white mb-3">Studente</h6>
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-person-circle me-2"></i>
-                                <span class="small text-secondary">Francesco Lo Verde</span>
+                    <!-- Sezione Vision e Pilastri -->
+                    <div class="row g-4">
+                        <!-- Visione -->
+                        <div class="col-12 mb-3">
+                            <h4 class="text-white border-start border-primary border-4 ps-3">Visione del Progetto</h4>
+                            <p class="text-secondary mt-3">
+                                [Inserisci qui la descrizione della visione: Trustless, Eliminazione intermediari, GDPR compliance]
+                            </p>
+                        </div>
+
+                        <!-- Pilastro 1: Hashing -->
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded h-100">
+                                <h6 class="text-primary"><i class="bi bi-hash me-2"></i>Integrità (SHA-256)</h6>
+                                <p class="small text-secondary mb-0">
+                                    [Spiega come l'hashing garantisce che il file non venga mai caricato on-chain (Privacy-by-Design)]
+                                </p>
                             </div>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-envelope me-2"></i>
-                                <span class="small text-secondary">francesco.loverde@studenti.unipg.it</span>
+                        </div>
+
+                        <!-- Pilastro 2: SBT -->
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded h-100">
+                                <h6 class="text-primary"><i class="bi bi-person-badge me-2"></i>Soulbound Tokens (SSI)</h6>
+                                <p class="small text-secondary mb-0">
+                                    [Spiega l'uso degli EIP-5192 per l'identità non trasferibile del firmatario]
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Pilastro 3: Ciclo di Vita -->
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded h-100">
+                                <h6 class="text-primary"><i class="bi bi-arrow-repeat me-2"></i>Revoca e Stato</h6>
+                                <p class="small text-secondary mb-0">
+                                    [Spiega la possibilità di invalidare certificazioni obsoletate mantenendo lo storico]
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Pilastro 4: Smart Contract -->
+                        <div class="col-md-6">
+                            <div class="p-3 border border-secondary rounded h-100">
+                                <h6 class="text-primary"><i class="bi bi-code-slash me-2"></i>Smart Contract Logic</h6>
+                                <p class="small text-secondary mb-0">
+                                    [Descrivi brevemente l'uso di Solidity e della Testnet Sepolia per la persistenza dei dati]
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </main>
-    </div>
 
-</body>
+                    <!-- Footer Studente -->
+                    <div class="mt-5 pt-4 border-top border-secondary d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="mb-0 text-white fw-bold">Francesco Lo Verde</p>
+                            <p class="small text-muted mb-0">Studente Università degli Studi di Perugia</p>
+                        </div>
+                        <img src="https://www.unipg.it/templates/unipg2022/img/logo-unipg.svg" alt="Unipg Logo" style="height: 40px; filter: grayscale(1) invert(1);">
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </body>
 </html>

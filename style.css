@@ -125,7 +125,8 @@ h2 #form-title {
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    justify-content: space-between;
+    padding: 0 30px;
     flex-shrink: 0;
 }
 
