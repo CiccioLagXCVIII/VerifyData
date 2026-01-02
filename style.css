@@ -16,7 +16,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Evita lo scroll dell'intera pagina */
+    overflow: hidden; 
 }
 
 /* ==================== Sidebar (Navbar Laterale) ==================== */
@@ -78,15 +78,6 @@ body {
 .github-link:hover { color: white; }
 
 /* ==================== Form, Input E Bottoni ==================== */
-.custom-card {
-    background-color: #1e1e1e;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 30px;
-    max-width: 800px;
-    width: 100%;
-}
-
 h2 #form-title {
     color: white;
     font-weight: 600;
@@ -97,8 +88,6 @@ h2 #form-title {
     color: var(--text-muted);
     font-weight: 500;
 }
-
-
 
 .form-control, .form-select {
     background-color: #252525 !important;
@@ -137,18 +126,39 @@ h2 #form-title {
 }
 
 .content-area {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
     background-color: var(--bg-dark);
+    flex: 1;
+    padding: 40px; /* Padding uniforme su tutti i lati */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    /* Rimosso align-items center per permettere alla card di espandersi */
+}
 
+.custom-card {
+    width: 100%; 
+    background-color: #1a1d21;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 2.5rem;
+    /* Rimosso max-width per farla adattare al contenitore */
+}
+
+.unipg-logo {
+    width: 125px; 
+    height: auto;
+}
+
+.logo-container {
+    background-color: rgba(255, 255, 255, 0.25); 
+    padding: 15px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 /* ==================== Form Caricamento Documenti ==================== */
-
 .upload-area {
     background-color: #1a1a1a; 
     border: 2px dashed #444; 

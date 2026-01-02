@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Progetto - Home</title>
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Bootstrap Icons -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+      <header class="app-header d-flex justify-content-between align-items-center px-4">
+            <h5 class="mb-0 text-white">
+                  <i class="bi bi-layers-half me-2 text-primary"></i>VerifyData
+            </h5>
+            <!-- Pulsante Accesso A Destra Non Serve -->
+      </header>
+
+      <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                  <nav class="nav-links">
+                        <a href="index.html" class="nav-link">
+                              <i class="bi bi-house-door"></i> <span>Presentazione</span>
+                        </a>
+                        <a href="profilo.html" class="nav-link">
+                              <i class="bi bi-person-vcard"></i> <span>Profilo SSI</span>
+                        </a>
+                        <a href="certifica.html" class="nav-link">
+                              <i class="bi bi-shield-check"></i> <span>Certifica Documento</span>
+                        </a>
+                        <a href="verifica.html" class="nav-link">
+                              <i class="bi bi-search"></i> <span>Verifica Pubblica</span>
+                        </a>
+                  </nav>
+
+                  <div class="sidebar-footer">
+                        <a href="https://github.com/CiccioLagXCVIII" target="_blank" class="github-link">
+                              <i class="bi bi-github me-2"></i> <span>GitHub Project</span>
+                        </a>
+                  </div>
+            </aside>
+
+            <!-- Contenuto Centrale -->
+            <main class="content-area">
+                  <div class="custom-card">
+                        <h2 id="form-title" class="mb-4">Connessione Al Wallet</h2>
+                        
+                        <div class="row g-3">
+                              
+                              <!-- Prima Colonna: Titolo -->
+                              <div class="col-md-6">
+                                    <div class="h-100 d-flex align-items-center justify-content-left">
+                                          <p class="mb-0 text-center">Utilizza MetaMask per accedere in modo sicuro alla piattaforma</p>
+                                    </div>
+                              </div>
+
+                              <!-- Seconda Colonna: Bottone -->
+                              <div class="col-md-6">
+                                    <div class="p-3 h-100 d-flex align-items-center justify-content-center">
+                                          <!-- Il bottone qui -->
+                                          <button class="btn btn-primary w-100 py-3" id="connectWalletBtn">
+                                                <i class="bi bi-wallet2 me-2"></i> Connetti Wallet
+                                          </button>
+                                    </div>
+                              </div>
+                              
+                        </div>
+                  </div>
+            </main>
+      </div>
+      <script src="js/main.js"></script>
+      <script src="js/auth.js"></script>
+</body>
+</html>

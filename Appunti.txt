@@ -12,7 +12,7 @@ Questo documento descrive la logica funzionale e i contenuti di ogni pagina dell
     - Vantaggi: Immutabilità, Privacy (il file non lascia il PC), Identità Sovrana (SBT).
 - **Logica:** Pagina statica, non richiede connessione al wallet per la lettura.
 
-### `connessione.html` (Gateway di Accesso)
+### `connessione.html` (Gateway Di Accesso)
 **Scopo:** Gestire l'onboarding dell'utente nel Web3.
 - **Contenuti:**
     - Card dinamica che cambia stato in base alla connessione.
