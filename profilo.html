@@ -10,14 +10,19 @@
 </head>
 <body>
 
-    <header class="app-header d-flex justify-content-between align-items-center px-4">
+    <header class="app-header d-flex justify-content-between align-items-center px-4" id="navbar">
         <h5 class="mb-0 text-white">
             <i class="bi bi-layers-half me-2 text-primary"></i>VerifyData
         </h5>
         <!-- Pulsante Accesso a destra -->
-        <a href="connessione.html" class="btn btn-outline-primary btn-sm rounded-pill px-3" id="connectWalletBtn">
-            <i class="bi bi-wallet-fill"></i> Connetti Wallet
-        </a>
+        <div id="headerActions" class="d-flex align-items-center gap-2">
+            <!-- Nella Pagina Profilo Non Mostriamo Il Pulsante Di Connessione Perché L'Utente È Già Connesso -->
+            <!--
+            <a href="connessione.html" class="btn btn-outline-primary btn-sm rounded-pill" id="connectWalletBtn">
+                <i class="bi bi-wallet-fill"></i> Connetti Wallet
+            </a>
+            -->
+        </div>
     </header>
 
     <div class="main-container">
@@ -39,33 +44,58 @@
             </nav>
 
             <div class="sidebar-footer">
-                <a href="https://github.com/CiccioLagXCVIII" target="_blank" class="github-link">
-                    <i class="bi bi-github me-2"></i> <span>GitHub Project</span>
+                <a href="https://github.com/CiccioLagXCVIII" target="blank" class="github-link">
+                    <i class="bi bi-github me-2"></i> <span>GitHub</span>
                 </a>
             </div>
         </aside>
         
         <main class="content-area">
-            <div class="custom-card">
-                <h2 class="mb-4" class="mb-4 text-center">Richiedi Identità</h2>
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Nome</label>
-                        <input type="text" class="form-control" placeholder="Mario">
+            <!-- Card Richiesta: Visibile Se Non Ha Identità -->
+            <div class="custom-card" style="display: none;">
+                <div id="identityRequest">
+                    <h2 class="mb-4 text-center">Richiedi Identità Sovrana</h2>
+                    <p class="text-center">Per certificare documenti come utente verificato, devi richiedere il tuo Badge SBT.</p>
+                    <form id="mintSBTForm" class="text-center">
+                        <button type="submit" class="btn btn-primary">Minta il tuo Badge (SBT)</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Card Dati: nascosta di default -->
+            <div class="custom-card" style="display: none;">
+                <div id="profileData">
+                    <h2 class="mb-4 text-center">Dashboard Identità</h2>
+                    <div class="alert alert-info">
+                        <strong>Wallet: <script>document.write(localStorage.getItem('walletAddress'))</script></strong> <span id="displayAddr"></span><br>
+                        <strong>Status:</strong> <span class="badge bg-success">Identità Verificata</span>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Cognome</label>
-                        <input type="text" class="form-control" placeholder="Rossi">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Indirizzo Email</label>
-                        <input type="email" class="form-control" placeholder="name@example.com">
-                    </div>
-                    <button type="submit" class="btn btn-primary px-4">Invia</button>
-                </form>
+                    
+                    <h4 class="mt-4">I Tuoi Documenti Certificati</h4>
+                    <table class="table table-dark table-hover mt-3">
+                        <thead>
+                            <tr>
+                                <th>Nome File</th>
+                                <th>Data</th>
+                                <th>Hash SHA-256</th>
+                                <th>Azione</th>
+                            </tr>
+                        </thead>
+                        <tbody id="documentsTable">
+                            <!-- Riga d'esempio simulata -->
+                            <tr>
+                                <td>Contratto_Affitto.pdf</td>
+                                <td>02/01/2026</td>
+                                <td><small>8f32...a12b</small></td>
+                                <td><button class="btn btn-danger btn-sm">Revoca</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
     </div>  
     <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
 </body>
 </html>
