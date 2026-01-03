@@ -1,59 +1,81 @@
-# VerifyData
-# Progetto VerifyData: Sistema di Certificazione Decentralizzata e Identità Sovrana
+# VerifyData: Sistema di Certificazione Decentralizzata e Identità Sovrana
+
+**VerifyData** è una Decentralized Application (DApp) per la notarizzazione digitale e la gestione dell'identità basata sui paradigmi della **Self-Sovereign Identity (SSI)**. Il progetto mira a garantire l'autenticità, l'integrità e la paternità di documenti digitali senza l'ausilio di intermediari centralizzati.
 
 ## 1. Visione del Progetto
-**VerifyData** è una Decentralized Application (DApp) progettata per la notarizzazione digitale e la gestione dell'identità basata sui paradigmi della **Self-Sovereign Identity (SSI)**. L'obiettivo principale è fornire un'infrastruttura fiduciaria (trustless) che permetta di garantire l'autenticità, l'integrità e la paternità di documenti digitali, eliminando la necessità di intermediari centralizzati.
+A differenza dei sistemi di notarizzazione tradizionali, VerifyData introduce un legame indissolubile tra il documento e l'identità verificata del firmatario. Utilizzando gli standard della rete Ethereum, la certificazione diventa un elemento dinamico, verificabile e legalmente rilevante nel contesto del Web3.
 
-A differenza dei sistemi di notarizzazione tradizionali, VerifyData introduce un legame indissolubile tra il documento e l'identità verificata del firmatario, utilizzando standard emergenti della rete Ethereum per garantire che la certificazione non sia solo un dato statico, ma un elemento dinamico e verificabile.
+## 2. Pilastri Tecnologici e Architetturali
 
-## 2. I Pilastri Tecnologici e Architetturali
-
-### 2.1 Integrità e Notarizzazione tramite Hashing (Privacy-by-Design)
-Il sistema adotta un approccio **Privacy-by-Design** in conformità con il GDPR. Il documento originale (sia esso un referto medico, un contratto o codice sorgente) non viene mai caricato sulla blockchain né trasmesso al server.
-*   **Processo:** Attraverso l'algoritmo **SHA-256**, viene generata localmente nel browser un'impronta informatica (Hash) univoca.
-*   **Risultato:** Solo l'hash viene registrato on-chain. Ciò garantisce l'immutabilità del dato e la prova di esistenza (Proof of Existence) senza esporre informazioni sensibili.
+### 2.1 Integrità tramite Hashing (Privacy-by-Design)
+In conformità con il GDPR, il documento originale non viene mai caricato on-chain né trasmesso a server esterni.
+*   **Processo:** L'algoritmo **SHA-256** genera localmente un'impronta informatica (Hash) univoca.
+*   **Risultato:** Solo l'hash viene registrato sulla blockchain, garantendo la **Proof of Existence** senza esporre dati sensibili.
 
 ### 2.2 Identità Sovrana e Soulbound Tokens (SBT)
-Il cuore innovativo di VerifyData risiede nel modulo di identità. Per superare l'anonimato degli indirizzi wallet standard, il progetto implementa il concetto di **Soulbound Tokens (SBT)**, ispirato alla proposta di Vitalik Buterin e allo standard **EIP-5192**.
-*   **Funzionamento:** Gli utenti possono richiedere un "Badge di Identità", un token non trasferibile legato permanentemente al proprio indirizzo.
-*   **Valore:** Questo badge funge da attestazione digitale (Attestation) che qualifica l'autore della certificazione (es. "Medico Verificato", "Ente Certificatore"), permettendo a terzi di distinguere tra una notarizzazione anonima e una professionale.
+Il sistema supera l'anonimato dei wallet standard implementando lo standard **EIP-5192**.
+*   **Badge di Identità:** Un token non trasferibile legato permanentemente all'indirizzo dell'utente.
+*   **Valore:** Funge da attestazione digitale che qualifica l'autore (es. "Ente Certificatore", "Professionista Verificato").
 
-### 2.3 Gestione del Ciclo di Vita: Revoca e Aggiornamento
-Uno dei limiti dei registri distribuiti è la persistenza di dati obsoleti. VerifyData introduce una **logica di stato** per ogni certificazione:
-*   **Revoca On-Chain:** L'autore ha la facoltà di invalidare una propria certificazione (es. in caso di errore nel documento originale o emissione di una nuova versione).
-*   **Trasparenza:** La revoca non cancella la cronologia (impossibile in blockchain), ma aggiorna lo stato del record, informando chiunque consulti il portale che quel documento non è più da considerarsi valido.
+### 2.3 Gestione del Ciclo di Vita: Revoca
+VerifyData introduce una logica di stato per le certificazioni. L'autore può invalidare una propria notarizzazione on-chain (es. per aggiornamenti o errori), garantendo trasparenza totale sulla validità attuale del documento.
 
 ---
 
-## 3. Architettura dell'Interfaccia Utente
+## 3. Struttura del Progetto
 
-La DApp è strutturata in cinque moduli funzionali per guidare l'utente nel processo di certificazione:
+Il progetto è organizzato per guidare l'utente attraverso un flusso di lavoro logico:
 
-1.  **Hub Informativo (Home):** Landing page dedicata alla divulgazione dei concetti di crittografia asimmetrica, hashing e i vantaggi della blockchain rispetto ai sistemi centralizzati.
-2.  **Identity Manager (Profilo Digitale):** Interfaccia per la gestione del proprio profilo SSI e per l'interazione con il contratto di emissione dei Soulbound Tokens.
-3.  **Notarization Engine (Certifica):** Area operativa dotata di drag-and-drop per il calcolo dell'hash in tempo reale e l'invio della transazione di marcatura temporale (Timestamping).
-4.  **Personal Ledger (I miei Documenti):** Dashboard privata che interroga la blockchain per mostrare lo storico delle certificazioni effettuate dall'utente, offrendo gli strumenti per la gestione della revoca.
-5.  **Public Validator (Verifica):** Portale pubblico di verifica. Caricando un file, il sistema confronta l'hash calcolato al volo con quello registrato on-chain, restituendo l'esito sulla validità, l'autore e l'integrità del documento.
+*   `index.html` (Hub Informativo): Landing page divulgativa su crittografia, hashing e vantaggi della blockchain.
+*   `connessione.html` (Gateway Web3): Pagina per la connessione di MetaMask e la gestione dell'identità iniziale.
+*   `certifica.html` (Notarization Engine): Area operativa drag-and-drop per il calcolo dell'hash e la marcatura temporale.
+*   `profilo.html` (Personal Ledger): Dashboard privata per visualizzare lo storico dei documenti e gestire le revoche.
+*   `verifica.html` (Public Validator): Portale pubblico per confrontare un file con i registri on-chain e verificarne l'integrità.
 
 ---
 
-## 4. Piano di Implementazione Tecnica
+## 4. Stack Tecnologico
 
-### Fase 1: Smart Contract Layer (Solidity)
-*   Sviluppo del contratto principale basato su mappature (`mapping`) per l'archiviazione efficiente degli hash.
-*   Implementazione dell'interfaccia **EIP-5192** per garantire la non-trasferibilità dei badge di identità.
-*   Definizione delle funzioni di controllo accesso (Access Control) per le operazioni di revoca.
+### Smart Contract Layer
+*   **Solidity:** Logica di business on-chain.
+*   **EIP-5192:** Implementazione dei Soulbound Tokens non trasferibili.
 
-### Fase 2: Sviluppo Frontend & Client-Side Logic
-*   Sviluppo dell'interfaccia reattiva in HTML5 e CSS3.
-*   Integrazione della libreria **Crypto-JS** o delle Web Crypto API per l'hashing locale dei file.
+### Frontend & Web3 Integration
+*   **Javascript (ES6+):** Logica applicativa e gestione dello stato.
+*   **Ethers.js / Web3.js:** Interazione con la blockchain Ethereum.
+*   **Web Crypto API:** Calcolo dell'hash SHA-256 lato client.
+*   **HTML5 / CSS3 (Bootstrap):** Interfaccia utente reattiva e moderna.
 
-### Fase 3: Integrazione Web3 (Ethers.js / Web3.js)
-*   Gestione della comunicazione con il provider (MetaMask).
-*   Sincronizzazione dello stato della DApp con gli eventi emessi dallo Smart Contract.
-*   Parsing dei dati on-chain per la visualizzazione dell'archivio storico.
+---
 
-### Fase 4: Validazione e Test
-*   Deployment su **Testnet Sepolia** per simulare un ambiente di produzione.
-*   Verifica formale delle funzioni di sicurezza e della resistenza a tentativi di manipolazione dei dati.
-*   
+## 5. Logica di Funzionamento (High-Level)
+
+1.  **Connessione:** L'utente connette il proprio wallet (MetaMask). Lo stato della sessione viene persistito tramite `localStorage`.
+2.  **Identità:** Se l'indirizzo non possiede un badge SBT, l'utente può "mintare" la propria identità sovrana.
+3.  **Certificazione:** L'utente carica un file. Il sistema calcola l'hash `0x...` senza inviare il file in rete.
+4.  **Notarizzazione:** Una transazione registra l'hash e il timestamp sulla blockchain (Testnet Sepolia).
+5.  **Verifica:** Un terzo uploader carica lo stesso file; il sistema calcola l'hash, interroga il contratto e restituisce l'autore verificato e lo stato di validità.
+
+---
+
+## 6. Installazione e Sviluppo Locale
+
+1.  Clona il repository:
+    ```bash
+    git clone https://github.com/CiccioLagXCVIII/VerifyData.git
+    ```
+2.  Apri il progetto con un server locale (*Live Server* su VS Code).
+3.  Assicurati di avere l'estensione **MetaMask** installata nel browser.
+4.  Configura lo Smart Contract su Sepolia e aggiorna l'ABI e l'Address nel file `main.js`.
+
+---
+
+## 7. Note Accademiche
+Progetto realizzato per l'esame di **Data Security and Blockchain**.
+*   **Studente:** Francesco Lo Verde
+*   **Docente:** Prof. Luca Grilli
+
+---
+
+### Licenza
+Distribuito sotto licenza MIT. Vedi `LICENSE` per ulteriori informazioni.
