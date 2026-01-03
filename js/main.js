@@ -1,76 +1,97 @@
+// Attende Il Caricamento Completo Del Documento DOM
 document.addEventListener('DOMContentLoaded', () => {
-      console.log("VerifyData: Javascript Caricato");
-      
-      // Rimuove  eventuali parametri o slash finali dall'URL
-      let currentPage = window.location.pathname.split("/").pop();
-      if (currentPage === "" || currentPage === undefined) currentPage = 'index.html';
+      // Recupera Il Percorso URL Corrente Per Identificare La Pagina
+      const path = window.location.pathname;
 
-      // Gestione Link Attivo della Sidebar
+      // Estrae Il Nome Del File Finale Dal Percorso
+      let currentPage = path.split("/").pop();
+      // Imposta Di Default La Index Se Il Percorso È Vuoto
+      if (currentPage === "" || path.endsWith('/')) {
+            currentPage = 'index.html';
+      }
+
+      // Mostra In Console La Pagina Attiva Per Debugging
+      console.log("VerifyData: Pagina Corrente ->", currentPage);
+
+      // Gestione Dello Stato Attivo Dei Link Di Navigazione
       const navLinks = document.querySelectorAll('.nav-link');
       navLinks.forEach(link => {
-            // Usiamo .includes per gestire meglio i percorsi relativi
-            if (link.getAttribute('href') === currentPage) {
+            // Ottiene L'attributo Href Di Ogni Collegamento
+            const href = link.getAttribute('href');
+            // Aggiunge La Classe Active Se Il Link Corrisponde Alla Pagina Attuale
+            if (currentPage === href || (currentPage === 'index.html' && href === 'index.html')) {
                   link.classList.add('active');
+            } else {
+                  // Rimuove La Classe Active Dai Link Non Pertinenti
+                  link.classList.remove('active');
             }
       });
 
-      // Controllo Sessione (Protezione Pagine Private)
+      // Elenco Delle Pagine Protette Che Richiedono La Connessione Del Wallet
       const privatePages = ['profilo.html', 'certifica.html'];
-      // Recupero indirizzo wallet dalla localStorage
+      // Recupera L'indirizzo Del Wallet Dallo Storage Locale
       const walletConnected = localStorage.getItem('walletAddress') || "";
 
+      // Reindirizza L'utente Se Prova Ad Accedere A Pagine Private Senza Wallet
       if (privatePages.includes(currentPage) && !walletConnected) {
             alert("Accesso Negato. Connetti Il Tuo Wallet Per Continuare.");
             window.location.href = 'connessione.html';
-            return; // Blocca l'esecuzione del resto del codice
+            return; 
       }
 
-      // Aggiornamento Pulsante Connessione
+      // Riferimenti Agli Elementi Di Autenticazione Nell'interfaccia
       const authBtn = document.getElementById('connectWalletBtn');
       const headerBtn = document.getElementById('headerActions');
-      // Se l'utente è connesso (walletConnected non è vuoto)
+      // Aggiorna L'interfaccia Utente Se Il Wallet Risulta Collegato
       if (walletConnected) {
-            // Se esiste il pulsante "Connetti Wallet", lo trasformiamo in "Indirizzo"
             if (authBtn) {
                   const addr = walletConnected;
+                  // Crea Una Versione Abbreviata Dell'indirizzo Wallet
                   const shortenedAddress = addr.substring(0, 6) + "..." + addr.substring(addr.length - 4);
 
+                  // Trasforma Il Pulsante Di Connessione Nel Profilo Utente
                   authBtn.innerHTML = `<i class="bi bi-person-check-fill me-2"></i> ${shortenedAddress}`;
-                  // Se è connesso, il pulsante porta al profilo
                   authBtn.href = "profilo.html";
-                  // Cambio stile visivo
                   authBtn.classList.replace('btn-outline-primary', 'btn-primary');
             }
-            // Se esiste il div "Header Actions", aggingo il pulsante di logout
-            if (headerBtn) {
-                  // Aggiungo Pulsante Logout Controllando Che Non Esista Già
-                  // Evitiamo di aggiungerlo due volte se il codice gira più volte
-                  if (!document.getElementById('logoutBtn')) {
-                        headerBtn.innerHTML += ` 
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill" id="logoutBtn">
-                              <i class="bi bi-box-arrow-right"></i>
-                        </button>`;
-                  }  
+            // Crea Dinamicamente Il Pulsante Di Logout Nell'header
+            if (headerBtn && !document.getElementById('logoutBtn')) {
+                  const logoutBtn = document.createElement('button');
+                  logoutBtn.type = 'button';
+                  logoutBtn.id = 'logoutBtn';
+                  logoutBtn.className = 'btn btn-danger btn-sm rounded-pill ms-2';
+                  logoutBtn.innerHTML = '<i class="bi bi-box-arrow-right"></i>';
+
+                  // Gestisce L'evento Di Disconnessione E Pulizia Dei Dati
+                  logoutBtn.addEventListener('click', () => {
+                        localStorage.removeItem('walletAddress');
+                        localStorage.removeItem('identitySBT');
+                        window.location.href = 'index.html';
+                  });
+
+                  // Aggiunge Il Pulsante Creato All'header Della Pagina
+                  headerBtn.appendChild(logoutBtn);
             }
       }
 
-const identitySBT = localStorage.getItem('identitySBT'); // Sarà null se non esiste
+// Verifica La Presenza Del Token Identità Soulbound
+const identitySBT = localStorage.getItem('identitySBT');
 
+      // Gestione Della Logica Visiva Nella Pagina Profilo
       if (currentPage === 'profilo.html' && walletConnected) {
             const requestSection = document.getElementById('identityRequest');
             const profileSection = document.getElementById('profileData');
-            
-            // Se sono presenti entrambe le sezioni (vuol dire che siamo nella pagina profilo)
+            // Verifica L'esistenza Delle Sezioni HTML Prima Di Operare
             if (requestSection && profileSection) {
                   console.log("VerifyData: Sezioni Identificate");
+                  // Mostra I Dati Del Profilo Se L'identità SBT È Presente
                   if (identitySBT) {
                         console.log("VerifyData: Utente Con Identità");
                         requestSection.parentElement.style.display = 'none';
                         profileSection.parentElement.style.display = 'block';
-
-                        // Richiesta Dati Profilo Alla Blockchain (Simulato)
-                        console.log("VerifyData: Caricamento Dati Dall Blockchain (simulato)");
+                        console.log("VerifyData: Caricamento Dati Dall Blockchain");
                   } else {
+                        // Mostra La Sezione Per Richiedere L'identità Se Mancante
                         requestSection.parentElement.style.display = 'block';
                         profileSection.parentElement.style.display = 'none';
                         console.log("VerifyData: Utente Senza Identità");

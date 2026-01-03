@@ -57,6 +57,3 @@ La DApp è strutturata in cinque moduli funzionali per guidare l'utente nel proc
 *   Deployment su **Testnet Sepolia** per simulare un ambiente di produzione.
 *   Verifica formale delle funzioni di sicurezza e della resistenza a tentativi di manipolazione dei dati.
 *   
-
-## Test Di Commit
-
