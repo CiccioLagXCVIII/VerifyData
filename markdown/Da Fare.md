@@ -1,57 +1,78 @@
-### 2. `index.html` (Presentazione)
-*   **Cosa manca (Obbligatorio):**
-    *   Sostituire i testi tra parentesi quadre `[...]`. Scrivi testi tecnici ma chiari: spiega che SHA-256 è una funzione unidirezionale e che l'SBT è implementato tramite lo standard EIP-5192.
-*   **Per la lode:**
-    *   **Diagramma di flusso:** Inserisci un piccolo schema (anche fatto con CSS o una immagine) che mostri il percorso: *Documento -> Hash -> Firma con Chiave Privata -> Registrazione su Testnet*.
-    *   **Sezione Glossario:** Una piccola tabella che spieghi termini come "Gas Fee", "Timestamping" e "Immutabilità".
+### 🌎 Logica Di Sistema
+**Robustezza Navigazione:** In `main.js`, passare dal controllo `pathname.pop()` a `location.pathname.includes()` per evitare bug con parametri URL.
 
----
+**Event Listener Provider:** Implementare in `auth.js` l'ascolto degli eventi di MetaMask:
+    - `accountsChanged`: Per aggiornare l'interfaccia se l'utente cambia wallet.
+    - `chainChanged`: Per ricaricare la pagina se l'utente cambia rete.
+  
+**Network Check:** Aggiungere un controllo per verificare che l'utente sia su **Sepolia Testnet**. Se su Mainnet, mostrare un avviso.
 
-### 3. `connessione.html` (Gateway)
-*   **Cosa manca (Obbligatorio):**
-    *   **Gestione errori:** Se l'utente rifiuta la connessione da MetaMask, il pulsante deve tornare allo stato originale con un messaggio di errore visibile (non solo in console).
-*   **Per la lode:**
-    *   **Event Listener di MetaMask:** Aggiungi `window.ethereum.on('accountsChanged', ...)` e `window.ethereum.on('chainChanged', ...)`. Se l'utente cambia account su MetaMask, la tua DApp deve accorgersene e aggiornare l'indirizzo o fare logout automaticamente. Questo dimostra che sai come gestire lo stato asincrono del provider.
+**Database Simulato (LocalStorage):** Creare una struttura dati in `localStorage` per memorizzare i documenti notarizzati dell'utente (es. `docs_0xAddress: [{hash, name, date, status}]`).
 
----
+### 🌎 Grafica Globale
+**Feedback Visivo:** Aggiungere transizioni CSS sugli hover (pulsanti e drop-zone).
 
-### 4. `certifica.html` (Notarizzazione)
-*   **Cosa manca (Obbligatorio):**
-    *   **Simulazione Transazione:** Quando l'utente clicca su "Carica Documento", non deve succedere nulla istantaneamente. Mostra uno spinner/caricamento per 2-3 secondi simulando il tempo di mining del blocco, poi mostra un messaggio di successo con il "Transaction ID" (finto).
-    *   **Salvataggio Stato:** L'hash calcolato deve essere salvato in un array nel `localStorage` (es: `documenti_utente_0x...`) altrimenti la pagina profilo rimarrà vuota.
-*   **Per la lode:**
-    *   **Metadata:** Aggiungi un campo input opzionale "Descrizione documento" o "Tag". Nella blockchain vera, questi andrebbero memorizzati in un evento (Logs) o su IPFS.
+**Branding:** Valutare l'uso di colori "Blockchain" (viola elettrico o verde neon su sfondo scuro) per differenziarsi dal tema standard di Bootstrap.
 
----
+**Loading States:** Implementare spinner o barre di caricamento per simulare i tempi di mining della blockchain (2-3 secondi).
 
-### 5. `profilo.html` (Dashboard Identità)
-*   **Cosa manca (Obbligatorio):**
-    *   **Tabella Dinamica:** Il `tbody` deve essere popolato via JS leggendo dal `localStorage`. Se non ci sono documenti, mostra un messaggio "Nessun documento certificato".
-    *   **Logica di Revoca:** Il tasto "Revoca" deve aggiornare lo stato del documento nel `localStorage` (es. da `Stato: Valido` a `Stato: Revocato`).
-*   **Per la lode:**
-    *   **Visualizzazione SBT:** Invece di un semplice testo "Badge Rilasciato", crea un elemento grafico (un vero e proprio badge o card) che mostri l'ID del token e la data di emissione.
-    *   **Filtri:** Aggiungi una ricerca rapida per nome file o un filtro per stato (Validi/Revocati).
+## 📄 Grafica Specifica Pagina
 
----
+### 1. `index.html` (Presentazione)
+*L'obiettivo è dimostrare la padronanza teorica dei concetti di Data Security.*
 
-### 6. `verifica.html` (Public Validator)
-*   **Cosa manca (Obbligatorio):**
-    *   **ATTENZIONE:** Il tuo codice attuale ha dei campi "Nome" e "Email". **Questo è concettualmente sbagliato** per una DApp di questo tipo. La verifica deve avvenire tramite il file.
-    *   **Modifica:** Devi inserire lo stesso componente di **Drag & Drop** che hai in `certifica.html`. L'utente trascina il file, il JS calcola l'hash e poi controlla nel `localStorage` se quell'hash esiste.
-*   **Per la lode:**
-    *   **Risultato Dettagliato:** Se il file è valido, mostra un "Certificato di Autenticità" visuale che dice: *"Documento integro. Certificato da 0x... in data 01/01/2026. L'autore possiede un'identità SBT valida."*
-    *   **Verifica via Hash:** Permetti all'utente di incollare direttamente una stringa Hash se non ha il file a portata di mano.
+**Necessario:** Sostituire tutti i placeholder `[...]` con testi tecnici:
+    - Spiegare l'unidirezionalità di SHA-256.
+    - Spiegare la non-trasferibilità dell'EIP-5192.
+    - Definire il concetto di "Timestamping decentralizzato".
+**Per la lode:**
+    - **Interactive Hash Demo:** Un piccolo box di testo dove l'utente scrive e vede l'hash cambiare in tempo reale (effetto *avalanche*).
+    - **Diagramma di Flusso:** Inserire uno schema (CSS o immagine) che mostri il percorso: *File -> Hash -> Firma -> Blockchain*.
+    - **Glossario:** Tabella pop-up o sezione che definisce termini come *Gas Fee*, *Immutabilità* e *Self-Sovereign Identity*.
 
----
+### 2. `connessione.html` (Gateway)
+*Gestione della sicurezza nell'onboarding.*
 
-### 7. Suggerimenti UI/UX (Style.css)
-*   **Mobile Responsiveness:** La tua sidebar si nasconde bene su mobile, ma controlla che la `custom-card` non diventi troppo stretta.
-*   **Tema:** Il blu (`#0d6efd`) è classico, ma per progetti Blockchain spesso si usa il **viola elettrico** o il **verde neon** su sfondo scuro per dare un tocco più "decentralizzato".
-*   **Feedback Visivo:** Aggiungi una transizione CSS quando l'utente passa sopra il `drop-zone` per renderlo più interattivo.
+**Necessario:**
+    - **Gestione Errori:** Se l'utente rifiuta la connessione, mostrare un alert o un messaggio rosso "Connessione rifiutata".
+    - **Feedback Assenza Wallet:** Se `window.ethereum` è undefined, mostrare un link diretto per installare MetaMask.
+**Per la lode:**
+    - **Session Persistence:** Ottimizzare il refresh della pagina affinché l'indirizzo non "scompaia" temporaneamente prima del caricamento del JS.
 
-### Riassunto per il prossimo step:
-1.  **Correggi `verifica.html`**: Togli il form email e metti l'hashing del file.
-2.  **Crea un "Database Simulato"**: In `main.js`, scrivi una funzione che gestisce un array di oggetti nel `localStorage` per i documenti.
-3.  **Animazioni di Caricamento**: Fondamentali per simulare l'attesa della blockchain.
+### 3. `certifica.html` (Notarizzazione)
+*Il cuore operativo del sistema.*
 
-Se vuoi, posso aiutarti a scrivere la logica per rendere la **tabella del profilo dinamica** e collegata alla pagina di certificazione.
+**Necessario:**
+    - **Pulsante Reset:** Permettere di pulire l'area dopo il calcolo dell'hash se l'utente ha scelto il file sbagliato.
+    - **Simulazione Mining:** Al click su "Registra", mostrare un caricamento che simuli l'attesa del blocco.
+    - **Persistence:** Al successo, salvare l'oggetto documento nel `localStorage` associato all'indirizzo dell'utente.
+**Per la lode:**
+    - **Metadata opzionali:** Aggiungere campi per "Titolo documento" o "Tag" (es. Lavoro, Medico, Legale).
+    - **Chunking Hashing:** Per file molto grandi (>100MB), implementare la lettura a pezzi (chunks) per non bloccare il thread del browser.
+
+### 4. `profilo.html` (Dashboard Identità)
+*Gestione dei dati e dell'identità SSI.*
+
+**Necessario:**
+    - **Tabella Dinamica:** Popolare il `tbody` leggendo dal `localStorage`.
+    - **Empty State:** Mostrare un messaggio "Ancora nessun documento" se l'array è vuoto.
+    - **Logica di Revoca:** Il tasto revoca deve cambiare lo stato del documento da `Valido` a `Revocato` localmente.
+**Per la lode:**
+    - **Visual Identity Card:** Creare un elemento grafico per il badge SBT (una card futuristica con ID Token e data emissione).
+    - **Filtri e Ricerca:** Aggiungere una barra di ricerca per filtrare i documenti per nome o per stato.
+
+### 5. `verifica.html` (Public Validator)
+*La sezione più importante per la verifica dell'integrità.*
+
+**Necessario:** 
+    - **Rimozione Form Email/Nome:** Eliminare i campi Mario Rossi, sono concettualmente errati.
+    - **Integrazione Drag & Drop:** Inserire la stessa logica di hashing di `certifica.html`. La verifica deve avvenire calcolando l'hash del file caricato.
+    - **Lookup Logic:** Confrontare l'hash generato con quelli presenti nel sistema (per ora il `localStorage`).
+**Per la lode:**
+    - **Certificate Report:** Se il file è trovato, generare una "Timeline" visiva: *Creato il... -> Firmato da... -> Stato attuale*.
+    - **Verifica Manuale:** Aggiungere un campo input per incollare direttamente l'hash (per chi non ha il file fisico).
+
+## 😶‍🌫️ Prossimi Passi
+1.  **Solidity Layer:** Sviluppare lo Smart Contract
+2.  **Web3 Integration:** Sostituire le letture/scritture dal `localStorage` con le chiamate `contract.methods` tramite Ethers.js.
+3.  **Deployment:** Caricare lo smart contract su Sepolia e configurare l'indirizzo nel frontend.
