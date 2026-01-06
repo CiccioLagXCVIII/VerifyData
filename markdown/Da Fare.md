@@ -72,6 +72,26 @@
     - **Certificate Report:** Se il file è trovato, generare una "Timeline" visiva: *Creato il... -> Firmato da... -> Stato attuale*.
     - **Verifica Manuale:** Aggiungere un campo input per incollare direttamente l'hash (per chi non ha il file fisico).
 
+## 📄 Script JS E Miglioramenti
+
+### **Sicurezza
+Attualmente uso il `localStorage` per determinare se un utente ha un SBT (`identitySBT: true`). Questo è facilmente "hackerabile" (basta aprire la console). Il frontend deve interrogare lo Smart Contract (`contract.balanceOf(address) > 0`) ogni volta che carica la pagina del profilo. Il `localStorage` deve essere usato solo come "cache" temporanea per velocizzare l'interfaccia.
+
+### **Gestione Eventi Web3**
+Nel file `auth.js`, si devono aggiungere i listener per i cambiamenti di stato di MetaMask:
+```javascript
+    window.ethereum.on('accountsChanged', (accounts) => { /* aggiorna localStorage e ricarica */ });
+    window.ethereum.on('chainChanged', () => { window.location.reload(); });
+```
+
+### **Crittografia (Notarizer.js)**
+Il calcolo dell'hash per file molto grandi potrebbe bloccare il browser. Si potrebbe implementare il "Chunking": leggere il file a pezzi (blob) invece di caricarlo interamente in memoria con `arrayBuffer()`.
+
+### **Integrazione Smart Contract (Ethers.js)**
+Si deve gestire il **Gas Estimation**. 
+Prima di inviare la transazione, si deve informare l'utente che sta per interagire con la blockchain. 
+Implementare l'ascolto degli eventi emessi dal contratto in modo da permettere al frontend di confermare l'avvenuta scrittura on-chain in modo asincrono.
+
 ## 😶‍🌫️ Prossimi Passi
 1.  **Solidity Layer:** Sviluppare lo Smart Contract
 2.  **Web3 Integration:** Sostituire le letture/scritture dal `localStorage` con le chiamate `contract.methods` tramite Ethers.js.
