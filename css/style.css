@@ -1,13 +1,37 @@
-/* ==================== Stile Condiviso Per Tutte Le Pagine ==================== */
+/* ==================== Variabili Globali ==================== */
 :root {
+    /* Colori di Sfondo */
     --bg-dark: #121212;
     --sidebar-bg: #181818;
-    --border-color: #2d2d2d;
+    --card-bg: #1a1d21;
+    --input-bg: #252525;
+    --upload-bg: #1a1a1a;
+    --hover-bg: #252525;
+    --active-bg: #2d2d2d;
+    --black-bg: #000000;
+
+    /* Colori Accento e Stati */
     --accent-color: #0d6efd;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    
+    /* Bordi */
+    --border-color: #2d2d2d;
+    --border-light: #444444;
+    --border-soft: #333333;
+    
+    /* Testi */
     --text-main: #e0e0e0;
     --text-muted: #a0a0a0;
+    --text-secondary: #adb5bd;
+    --text-icon: #6c757d;
+    --white: #ffffff;
+    
+    /* Trasparenze */
+    --logo-bg-overlay: rgba(255, 255, 255, 0.25);
 }
 
+/* ==================== Stile Base ==================== */
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
@@ -19,7 +43,7 @@ body {
     overflow: hidden; 
 }
 
-/* ==================== Sidebar (Navbar Laterale) ==================== */
+/* ==================== Sidebar ==================== */
 .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
@@ -52,13 +76,13 @@ body {
 }
 
 .sidebar .nav-link:hover {
-    color: white;
-    background-color: #252525;
+    color: var(--white);
+    background-color: var(--hover-bg);
 }
 
 .sidebar .nav-link.active {
-    color: white;
-    background-color: #2d2d2d;
+    color: var(--white);
+    background-color: var(--active-bg);
     border-left-color: var(--accent-color);
 }
 
@@ -75,11 +99,11 @@ body {
     align-items: center;
 }
 
-.github-link:hover { color: white; }
+.github-link:hover { color: var(--white); }
 
 /* ==================== Form, Input E Bottoni ==================== */
 h2 #form-title {
-    color: white;
+    color: var(--white);
     font-weight: 600;
     align-self: center;
 }
@@ -90,9 +114,9 @@ h2 #form-title {
 }
 
 .form-control, .form-select {
-    background-color: #252525 !important;
-    border: 1px solid #444 !important;
-    color: white !important;
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--white) !important;
 }
 
 .form-control:focus {
@@ -107,7 +131,7 @@ h2 #form-title {
     .sidebar .nav-link i { margin: 0; }
 }
 
-/* ==================== Homepage (index.html) ==================== */
+/* ==================== Struttura Layout ==================== */
 .app-header {
     height: 60px;
     background-color: var(--bg-dark);
@@ -128,20 +152,18 @@ h2 #form-title {
 .content-area {
     background-color: var(--bg-dark);
     flex: 1;
-    padding: 40px; /* Padding uniforme su tutti i lati */
+    padding: 40px; 
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    /* Rimosso align-items center per permettere alla card di espandersi */
 }
 
 .custom-card {
     width: 100%; 
-    background-color: #1a1d21;
+    background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 15px;
     padding: 2.5rem;
-    /* Rimosso max-width per farla adattare al contenitore */
 }
 
 .unipg-logo {
@@ -150,7 +172,7 @@ h2 #form-title {
 }
 
 .logo-container {
-    background-color: rgba(255, 255, 255, 0.25); 
+    background-color: var(--logo-bg-overlay); 
     padding: 15px;
     border-radius: 15px;
     display: flex;
@@ -160,27 +182,27 @@ h2 #form-title {
 
 /* ==================== Form Caricamento Documenti ==================== */
 .upload-area {
-    background-color: #1a1a1a; 
-    border: 2px dashed #444; 
+    background-color: var(--upload-bg); 
+    border: 2px dashed var(--border-light); 
     border-radius: 12px;
     padding: 50px 20px;
     text-align: center;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     margin-bottom: 20px;
-    color: #adb5bd;
+    color: var(--text-secondary);
 }
 
 .upload-area:hover, 
 .upload-area.drag-over {
-    background-color: #252525;
+    background-color: var(--hover-bg);
     border-color: var(--accent-color);
-    color: #fff;
+    color: var(--white);
     transform: translateY(-2px);
 }
 
 .upload-area i {
-    color: #6c757d;
+    color: var(--text-icon);
     margin-bottom: 15px;
     display: block;
     transition: color 0.3s;
@@ -200,17 +222,17 @@ h2 #form-title {
 
 #file-info {
     display: none;
-    background-color: #1a1a1a;
-    border: 1px solid #333;
+    background-color: var(--upload-bg);
+    border: 1px solid var(--border-soft);
     padding: 20px;
     border-radius: 10px;
-    border-left: 4px solid #198754;
-    color: #fff;
+    border-left: 4px solid var(--success-color);
+    color: var(--white);
     animation: fadeIn 0.4s ease-out;
 }
 
 #file-info strong {
-    color: #adb5bd;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     text-transform: uppercase;
 }
@@ -221,8 +243,8 @@ h2 #form-title {
     gap: 0.5rem;
     margin-top: 0.5rem;
     padding: 0.5rem;
-    background-color: #000;
-    border: 1px solid #444;
+    background-color: var(--black-bg);
+    border: 1px solid var(--border-light);
     border-radius: 6px;
 }
 
@@ -236,8 +258,8 @@ h2 #form-title {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: #198754;
-    color: white;
+    background-color: var(--success-color);
+    color: var(--white);
     padding: 12px 24px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);

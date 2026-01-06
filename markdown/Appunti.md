@@ -81,3 +81,6 @@ Per garantire una navigazione fluida, useremo il `localStorage` per persistere l
 1.  **Rinomina i file** come indicato nella tabella.
 2.  **Crea il CSS globale (`style.css`)** definendo i colori del brand (consiglio un blu scuro/viola per un look "Cyber/Security").
 3.  **Configura `main.js`** iniziando a scrivere la funzione di hashing locale.
+4.  
+
+**Comando Per Aprire Tunnel Remix** remixd -s . --remix-ide https://remix.ethereum.org

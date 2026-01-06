@@ -1,7 +1,3 @@
-
-
----
-
 ### 2. `index.html` (Presentazione)
 *   **Cosa manca (Obbligatorio):**
     *   Sostituire i testi tra parentesi quadre `[...]`. Scrivi testi tecnici ma chiari: spiega che SHA-256 è una funzione unidirezionale e che l'SBT è implementato tramite lo standard EIP-5192.
