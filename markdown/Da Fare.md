@@ -1,6 +1,4 @@
 ### 🌎 Logica Di Sistema
-**Robustezza Navigazione:** In `main.js`, passare dal controllo `pathname.pop()` a `location.pathname.includes()` per evitare bug con parametri URL.
-
 **Event Listener Provider:** Implementare in `auth.js` l'ascolto degli eventi di MetaMask:
     - `accountsChanged`: Per aggiornare l'interfaccia se l'utente cambia wallet.
     - `chainChanged`: Per ricaricare la pagina se l'utente cambia rete.
@@ -28,7 +26,7 @@
 **Per la lode:**
     - **Interactive Hash Demo:** Un piccolo box di testo dove l'utente scrive e vede l'hash cambiare in tempo reale (effetto *avalanche*).
     - **Diagramma di Flusso:** Inserire uno schema (CSS o immagine) che mostri il percorso: *File -> Hash -> Firma -> Blockchain*.
-    - **Glossario:** Tabella pop-up o sezione che definisce termini come *Gas Fee*, *Immutabilità* e *Self-Sovereign Identity*.
+    - **Glossario:** Tabella pop-up o sezione che definisce termini come Gas Fee, Immutabilità e Self-Sovereign Identity.
 
 ### 2. `connessione.html` (Gateway)
 *Gestione della sicurezza nell'onboarding.*

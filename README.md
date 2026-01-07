@@ -1,4 +1,4 @@
-# VerifyData: Sistema di Certificazione Decentralizzata e Identità Sovrana
+# VerifyData
 
 **VerifyData** è una Decentralized Application (DApp) per la notarizzazione digitale e la gestione dell'identità basata sui paradigmi della **Self-Sovereign Identity (SSI)**. Il progetto mira a garantire l'autenticità, l'integrità e la paternità di documenti digitali senza l'ausilio di intermediari centralizzati.
 
