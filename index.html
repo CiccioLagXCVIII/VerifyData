@@ -50,19 +50,41 @@
             </aside>
 
             <main class="content-area">
-                <div class="custom-card py-3">                     
-                    <!-- 1. Intestazione Progetto -->
-                    <div class="mb-4 text-center">
-                        <span class="badge border border-primary text-primary px-3 py-1 mb-2 rounded-pill" style="background: var(--accent-glow);">
-                            <i class="bi bi-shield-lock me-1"></i> Data Security Project
-                        </span>
-                        <!-- Ridotto leggermente il font-size con fs-2 o stile inline -->
-                        <h1 class="fw-bold text-white mb-1" style="letter-spacing: -1px; font-size: 2.5rem;">VerifyData</h1>
-                        <!-- Sostituito text-muted con una classe più chiara -->
-                        <p class="text-sub-title small text-uppercase fw-semibold" style="letter-spacing: 1px;">Notarizzazione Digitale e SSI su Ethereum</p>
+                <div class="custom-card py-3">       
+                    <!-- Header della Card: Struttura A 3 Colonne -->
+                    <div class="d-flex align-items-start mb-4" style="height: 40px; position: relative;">
+                        
+                        <!-- Colonna Sinistra (Vuoto)-->
+                        <div style="flex: 1;"></div>
+
+                        <!-- Colonna Centrale: Badge -->
+                        <div class="d-flex justify-content-center">
+                            <span class="badge border border-primary text-primary px-4 rounded-pill fs-6 d-flex align-items-center" 
+                                style="background: var(--accent-glow); height: 40px; white-space: nowrap;">
+                                <i class="bi bi-shield-lock me-2"></i> Data Security Project
+                            </span>
+                        </div>
+
+                        <!-- Colonna Destra: Status Indicator -->
+                        <div style="flex: 1;" class="d-flex justify-content-end">
+                            <div class="status-indicator d-flex align-items-center bg-dark px-3 rounded-pill border border-secondary" 
+                                style="height: 30px;">
+                                <span class="pulse-dot me-2" style="width: 5px; height: 5px;"></span>
+                                <span class="fw-semibold text-muted text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Network: 
+                                    <span class="text-success">Sepolia</span></span>
+                                <span class="mx-2 text-secondary">|</span>
+                                <span class="fw-semibold text-muted text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Status: 
+                                    <span class="text-white">Online</span></span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 2. Schema Workflow (Frecce Ingrandite) -->
+                    <!-- Titolo Progetto -->
+                    <div class="text-center mb-4">
+                        <h1 class="fw-bold text-white mb-1" style="letter-spacing: -1px; font-size: 2.5rem;">VerifyData</h1>
+                        <p class="text-sub-title small text-uppercase fw-semibold" style="letter-spacing: 1px;">Notarizzazione Digitale e SSI su Ethereum</p>
+                    </div>
+                    <!-- Schema Workflow (Frecce Ingrandite) -->
                     <div class="workflow-container p-4 mb-4">
                         <div class="row align-items-center g-0">
                             <div class="col text-center">
@@ -88,7 +110,7 @@
                         </div>
                     </div>
 
-                    <!-- 3. Sezione Definizioni (BOTTONI PER POP-UP) -->
+                    <!-- Sezione Definizioni (BOTTONI PER POP-UP) -->
                     <h6 class="text-white border-start border-primary border-3 ps-2 mb-3">Concetti Chiave</h6>
                     <div class="row g-2 mb-4">
                         <!-- Ogni bottone ha data-title e data-content che verranno letti dal JS -->
@@ -118,30 +140,22 @@
                         </div>
                     </div>
 
-                    <!-- 4. Effetto Avalanche (DEMO INTERATTIVA) -->
+                    <!-- Effetto Avalanche -->
                     <div class="avalanche-box p-3 border border-primary rounded-3 mb-4 bg-primary bg-opacity-10">
                         <h6 class="text-primary mb-2"><i class="bi bi-lightning-charge me-2"></i>Effetto Avalanche (SHA-256)</h6>
-                        <input type="text" id="avalancheInput" class="form-control form-control-sm bg-dark text-white border-secondary mb-2" placeholder="Scrivi qualcosa per vedere cambiare l'hash...">
+                        <input type="text" id="avalancheInput" class="form-control form-control-sm bg-dark text-white border-secondary mb-2" placeholder="Scrivi Qualcosa Per Vedere Cambiare L'Hash...">
                         <div class="p-2 bg-dark rounded border border-secondary">
-                            <code id="avalancheOutput" class="text-success small break-all" style="word-break: break-all;">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code>
+                            <code id="avalancheOutput" class="text-success small break-all" style="word-break: break-all;">...</code>
                         </div>
-                    </div>
-
-                    <!-- 5. Call To Action E Blockchain Status -->
-                    <div class="status-indicator d-flex align-items-center bg-dark px-3 py-1 rounded-pill border border-secondary">
-                        <span class="pulse-dot me-2"></span>
-                        <span class="small fw-semibold text-muted text-uppercase" style="letter-spacing: 1px;">Network: <span class="text-success">Ethereum Sepolia</span></span>
-                        <span class="mx-2 text-secondary">|</span>
-                        <span class="small fw-semibold text-muted text-uppercase" style="letter-spacing: 1px;">Status: <span class="text-white">Online</span></span>
                     </div>
 
                     <div class="cta-container text-center">
                         <a href="certifica.html" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow-lg cta-button">
-                            <i class="bi bi-shield-check me-2"></i> Inizia a Certificare
+                            <i class="bi bi-shield-check me-2"></i> Inizia A Certificare
                         </a>
                     </div>
 
-                    <!-- 7. Footer Studente (Esistente) -->
+                    <!-- Footer Studente (Esistente) -->
                     <div class="pt-3 border-top border-secondary d-flex justify-content-between align-items-center">
                         <div class="small">
                             <p class="mb-0 text-white fw-bold">Francesco Lo Verde</p>
@@ -162,7 +176,7 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body" id="infoModalBody">
-                        Contenuto...
+                        Contenuto
                     </div>
                 </div>
             </div>

@@ -62,21 +62,23 @@ export const HomeManager = {
             const input = document.getElementById('avalancheInput');
             const output = document.getElementById('avalancheOutput');
 
-            if (!input) return;
+            if (!input || !output) return;
 
-            input.addEventListener('input', async (e) => {
-                  const text = e.target.value;
-                  if (text === "") {
-                  output.textContent = "Hash Calcolato"; // Hash vuoto
-                  return;
-                  }
-
-                  // Calcolo hash rapido per la demo
+            // Funzione interna per calcolare l'hash
+            const updateHash = async (text) => {
                   const msgBuffer = new TextEncoder().encode(text);
                   const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
                   const hashArray = Array.from(new Uint8Array(hashBuffer));
                   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
                   output.textContent = hashHex;
+            };
+
+            // Esegui il calcolo al caricamento (per la stringa vuota)
+            updateHash("");
+
+            // Esegui il calcolo ogni volta che l'utente scrive
+            input.addEventListener('input', (e) => {
+                  updateHash(e.target.value);
             });
       },
 

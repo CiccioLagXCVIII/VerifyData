@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. VARIABILI GLOBALI
-   ========================================================================== */
+/* ############### Variabili Globali ############### */
 :root {
     /* Sfondi */
     --bg-dark: #0d1117;
@@ -16,7 +14,7 @@
     
     /* Testi */
     --text-main: #c9d1d9;
-    --text-muted: #8b949e;
+    --text-muted: #a1aab5;
     --white: #f0f6fc;
 
     /* Utility Colors */
@@ -25,9 +23,7 @@
     --active-bg: rgba(88, 166, 255, 0.1);
 }
 
-/* ==========================================================================
-   2. STILE BASE & LAYOUT
-   ========================================================================== */
+/* ############### Stile Di Base E Layout ############### */
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
@@ -66,9 +62,16 @@ body {
     flex-direction: column;
 }
 
-/* ==========================================================================
-   3. SIDEBAR
-   ========================================================================== */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.smallest {
+    font-size: 0.75rem;
+}
+
+
+/* ############### Sidebar ############### */
 .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
@@ -126,17 +129,15 @@ body {
 
 .github-link:hover { color: var(--white); }
 
-/* ==========================================================================
-   4. COMPONENTI (CARD & TITOLI)
-   ========================================================================== */
+/* ############### Card ############### */
 .custom-card {
+    position: relative;
     width: 100%;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     border-radius: 15px;
     padding: 1.5rem 2.5rem;
-    position: relative; /* Necessario per posizionare lo status indicator */
 }
 
 .custom-card h2 {
@@ -147,9 +148,7 @@ body {
 .text-sub-title { color: #adb5bd !important; }
 .text-secondary-light { color: #6c757d !important; }
 
-/* ==========================================================================
-   5. WORKFLOW SCHEMA
-   ========================================================================== */
+/* ############### Schema Workflow ############### */
 .workflow-container {
     background-color: #0d1117 !important;
     border: 1px solid var(--border-color);
@@ -168,61 +167,88 @@ body {
     font-weight: 500;
 }
 
-/* ==========================================================================
-   6. EFFETTO AVALANCHE (DEMO)
-   ========================================================================== */
+/* ############### Effetto Avalanche ############### */
 .avalanche-box {
     background-color: rgba(88, 166, 255, 0.05) !important;
     border: 1px dashed rgba(88, 166, 255, 0.2) !important;
 }
 
 #avalancheOutput {
+    display: block;
+    min-height: 1.2rem; 
     color: #44d664;
     font-family: 'Fira Code', 'Courier New', monospace;
     font-size: 0.8rem;
     font-weight: 500;
+    word-break: break-all;
 }
 
-/* ==========================================================================
-   7. CALL TO ACTION & STATUS (POSIZIONAMENTO FOTO)
-   ========================================================================== */
+/* Rende visibile il placeholder */
+#avalancheInput::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    opacity: 1;
+}
 
-/* Indicatore di stato in alto a destra della card */
+/* ############### Call To Action & Status ############### */
 .status-indicator {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    background-color: #0d1117 !important;
-    font-size: 0.7rem;
-    padding: 5px 15px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    z-index: 10;
+    background-color: var(--input-bg) !important;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+.custom-card .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
 }
 
-/* Container per spingere il tasto più in basso */
 .cta-container {
-    margin-top: 4rem; /* Aumenta lo spazio sopra il tasto */
-    margin-bottom: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 4rem;
 }
 
 .cta-button {
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.2s ease-in-out;
     border: none;
-    background: linear-gradient(45deg, var(--accent-color), #3a86ff);
-    box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+    background: var(--accent-color);
+    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+    border-radius: 8px;
 }
 
 .cta-button:hover {
-    transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 8px 25px rgba(88, 166, 255, 0.5);
-    background: linear-gradient(45deg, #70b1ff, var(--accent-color));
-    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.3);
+    background: #70b1ff;
+    filter: brightness(1.1);
 }
 
-/* ==========================================================================
-   8. ELEMENTI INTERATTIVI (BOTTONI & MODAL)
-   ========================================================================== */
+/* ############### Riepilogo (Colonna Desta Certifica) ############### */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.summary-value {
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* ############### Elementi Interattivi (Bottoni E Modal) ############### */
+
 .info-btn {
     background: transparent;
     border: 1px solid var(--border-color);
@@ -247,9 +273,7 @@ body {
 
 .modal-header { border-bottom: 1px solid var(--border-color); }
 
-/* ==========================================================================
-   9. FORM & INPUT
-   ========================================================================== */
+/* ############### Form E Input ############### */
 .form-control {
     background-color: var(--input-bg) !important;
     border: 1px solid var(--border-color) !important;
@@ -275,14 +299,12 @@ body {
     background-color: var(--hover-bg);
 }
 
-/* ==========================================================================
-   10. UTILITY, ANIMAZIONI & FOOTER
-   ========================================================================== */
+/* ############### Utility, Animazioni & Footer ############### */
 
 /* Pulse Animation */
 .pulse-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background-color: var(--success-color);
     border-radius: 50%;
     display: inline-block;
