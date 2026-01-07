@@ -189,20 +189,71 @@ body {
     opacity: 1;
 }
 
-/* ############### Call To Action & Status ############### */
-.status-indicator {
-    background-color: var(--input-bg) !important;
-    white-space: nowrap;
+/* ############### Card Header Layout ############### */
+.card-header-top {
     display: flex;
-    align-items: center;
-}
-.custom-card .badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
+    justify-content: space-between;
+    align-items: center; /* Ora che hanno stessa altezza, center è perfetto */
+    min-height: 40px;
 }
 
+.header-side {
+    flex: 1;
+}
+
+.header-center {
+    display: flex;
+    justify-content: center;
+}
+
+/* ############### Badge & Status Bar Coerenti ############### */
+
+/* Entrambi condividono la stessa altezza e allineamento */
+.badge-project, .status-bar {
+    height: 36px; 
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* Specifiche Badge Centrale */
+.badge-project {
+    background: var(--accent-glow);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    white-space: nowrap;
+}
+
+/* Specifiche Status Bar Destra */
+.status-bar {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+}
+
+.status-text {
+    color: var(--text-muted);
+}
+
+.status-divider {
+    margin: 0 10px;
+    color: var(--border-color);
+}
+
+/* Punto pulsante (già presente nel tuo CSS, assicurati sia così) */
+.pulse-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+/* ############### Call To Action (Button) ############### */
 .cta-container {
     margin-top: 2.5rem;
     margin-bottom: 4rem;

@@ -52,29 +52,25 @@
             <main class="content-area">
                 <div class="custom-card py-3">       
                     <!-- Header della Card: Struttura A 3 Colonne -->
-                    <div class="d-flex align-items-start mb-4" style="height: 40px; position: relative;">
+                    <div class="card-header-top mb-4">
                         
-                        <!-- Colonna Sinistra (Vuoto)-->
-                        <div style="flex: 1;"></div>
+                        <!-- Colonna Sinistra-->
+                        <div class="header-side"></div>
 
-                        <!-- Colonna Centrale: Badge -->
-                        <div class="d-flex justify-content-center">
-                            <span class="badge border border-primary text-primary px-4 rounded-pill fs-6 d-flex align-items-center" 
-                                style="background: var(--accent-glow); height: 40px; white-space: nowrap;">
+                        <!-- Colonna Centrale: Badge Progetto -->
+                        <div class="header-center">
+                            <span class="badge-project">
                                 <i class="bi bi-shield-lock me-2"></i> Data Security Project
                             </span>
                         </div>
 
                         <!-- Colonna Destra: Status Indicator -->
-                        <div style="flex: 1;" class="d-flex justify-content-end">
-                            <div class="status-indicator d-flex align-items-center bg-dark px-3 rounded-pill border border-secondary" 
-                                style="height: 30px;">
-                                <span class="pulse-dot me-2" style="width: 5px; height: 5px;"></span>
-                                <span class="fw-semibold text-muted text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Network: 
-                                    <span class="text-success">Sepolia</span></span>
-                                <span class="mx-2 text-secondary">|</span>
-                                <span class="fw-semibold text-muted text-uppercase" style="letter-spacing: 0.5px; font-size: 0.65rem;">Status: 
-                                    <span class="text-white">Online</span></span>
+                        <div class="header-side d-flex justify-content-end">
+                            <div class="status-bar">
+                                <span class="pulse-dot me-2"></span>
+                                <span class="status-text">Network: <span class="text-success">Sepolia</span></span>
+                                <span class="status-divider">|</span>
+                                <span class="status-text">Status: <span class="text-white">Online</span></span>
                             </div>
                         </div>
                     </div>
