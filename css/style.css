@@ -1,402 +1,111 @@
-/* ############### Variabili Globali ############### */
+/* ############### Variabili ############### */
 :root {
-    /* Sfondi */
     --bg-dark: #0d1117;
     --sidebar-bg: #010409;
     --card-bg: #161b22;
-    --input-bg: #1c2128;
-    
-    /* Accenti */
     --accent-color: #58a6ff;
-    --accent-glow: rgba(88, 166, 255, 0.1);
     --border-color: #30363d;
-    --border-light: #444c56; 
-    
-    /* Testi */
     --text-main: #c9d1d9;
     --text-muted: #a1aab5;
     --white: #f0f6fc;
-
-    /* Utility Colors */
     --success-color: #23d160;
-    --hover-bg: rgba(255, 255, 255, 0.05);
     --active-bg: rgba(88, 166, 255, 0.1);
 }
 
-/* ############### Stile Di Base E Layout ############### */
+/* ############### Reset e Layout Core ############### */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Segoe UI", system-ui, sans-serif;
     margin: 0;
-    height: 100vh;
+    padding: 0;
+    height: 100vh; /* Esattamente l'altezza del monitor */
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    overflow: hidden; 
+    overflow: hidden; /* Impedisce scroll globale del browser */
 }
 
+/* Container sotto l'header */
 .main-container {
     display: flex;
-    flex: 1;
+    flex: 1; /* Prende tutto lo spazio verticale rimanente */
     overflow: hidden;
 }
 
+/* Sidebar a larghezza fissa ma altezza 100% */
+.sidebar {
+    width: 16rem;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* AREA CONTENUTO: Il "padre" della card */
+.content-area {
+    flex: 1;
+    padding: 1.5rem; /* Spazio intorno alla card */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden; /* Non vogliamo scroll qui */
+}
+
+/* LA CARD: Deve stare dentro content-area */
+.custom-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Occupa tutto lo spazio del padre */
+    max-height: 100%;
+    overflow-y: auto; /* Se il contenuto interno eccede, lo scroll appare SOLO dentro la card */
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.5);
+}
+
+/* ############### Elementi Comuni ############### */
 .app-header {
-    height: 60px;
+    height: 4rem;
     background-color: var(--bg-dark);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 30px;
-    flex-shrink: 0;
-    z-index: 100;
+    padding: 0 1.5rem;
 }
 
-.content-area {
-    background-color: var(--bg-dark);
-    flex: 1;
-    padding: 25px 40px;
-    overflow-y: auto;
+.sidebar .nav-link {
+    color: var(--text-muted);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    transition: 0.2s;
 }
 
-.text-muted {
-    color: var(--text-muted) !important;
+.sidebar .nav-link.active {
+    color: var(--white);
+    background-color: var(--active-bg);
+    border-left: 0.25rem solid var(--accent-color);
 }
 
 .smallest {
     font-size: 0.75rem;
 }
 
-
-/* ############### Sidebar ############### */
-.sidebar {
-    width: 260px;
-    background-color: var(--sidebar-bg);
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-shrink: 0;
+/* Scrollbar sottile per la card */
+.custom-card::-webkit-scrollbar {
+    width: 0.4rem;
 }
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-}
-
-.sidebar .nav-link {
-    color: var(--text-muted);
-    padding: 12px 25px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border-left: 4px solid transparent;
-    display: flex;
-    align-items: center;
-}
-
-.sidebar .nav-link i {
-    margin-right: 12px;
-    font-size: 1.1rem;
-}
-
-.sidebar .nav-link:hover {
-    color: var(--white);
-    background-color: var(--hover-bg);
-}
-
-.sidebar .nav-link.active {
-    color: var(--white);
-    background-color: var(--active-bg);
-    border-left-color: var(--accent-color);
-}
-
-.sidebar-footer {
-    padding: 20px 25px;
-    border-top: 1px solid var(--border-color);
-}
-
-.github-link {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-}
-
-.github-link:hover { color: var(--white); }
-
-/* ############### Card ############### */
-.custom-card {
-    position: relative;
-    width: 100%;
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    border-radius: 15px;
-    padding: 1.5rem 2.5rem;
-}
-
-.custom-card h2 {
-    text-shadow: 0 0 15px rgba(88, 166, 255, 0.2);
-    font-weight: 800 !important;
-}
-
-.text-sub-title { color: #adb5bd !important; }
-.text-secondary-light { color: #6c757d !important; }
-
-/* ############### Schema Workflow ############### */
-.workflow-container {
-    background-color: #0d1117 !important;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    position: relative;
-}
-
-.workflow-container .col-auto i {
-    color: var(--border-light) !important;
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-.workflow-container .col .small {
-    color: var(--text-muted) !important;
-    font-weight: 500;
-}
-
-/* ############### Effetto Avalanche ############### */
-.avalanche-box {
-    background-color: rgba(88, 166, 255, 0.05) !important;
-    border: 1px dashed rgba(88, 166, 255, 0.2) !important;
-}
-
-#avalancheOutput {
-    display: block;
-    min-height: 1.2rem; 
-    color: #44d664;
-    font-family: 'Fira Code', 'Courier New', monospace;
-    font-size: 0.8rem;
-    font-weight: 500;
-    word-break: break-all;
-}
-
-/* Rende visibile il placeholder */
-#avalancheInput::placeholder {
-    color: rgba(255, 255, 255, 0.5) !important;
-    opacity: 1;
-}
-
-/* ############### Card Header Layout ############### */
-.card-header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Ora che hanno stessa altezza, center è perfetto */
-    min-height: 40px;
-}
-
-.header-side {
-    flex: 1;
-}
-
-.header-center {
-    display: flex;
-    justify-content: center;
-}
-
-/* ############### Badge & Status Bar Coerenti ############### */
-
-/* Entrambi condividono la stessa altezza e allineamento */
-.badge-project, .status-bar {
-    height: 36px; 
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 600;
-}
-
-/* Specifiche Badge Centrale */
-.badge-project {
-    background: var(--accent-glow);
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
-    white-space: nowrap;
-}
-
-/* Specifiche Status Bar Destra */
-.status-bar {
-    background-color: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
-}
-
-.status-text {
-    color: var(--text-muted);
-}
-
-.status-divider {
-    margin: 0 10px;
-    color: var(--border-color);
-}
-
-/* Punto pulsante (già presente nel tuo CSS, assicurati sia così) */
-.pulse-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--success-color);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-/* ############### Call To Action (Button) ############### */
-.cta-container {
-    margin-top: 2.5rem;
-    margin-bottom: 4rem;
-}
-
-.cta-button {
-    transition: all 0.2s ease-in-out;
-    border: none;
-    background: var(--accent-color);
-    box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
-    border-radius: 8px;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.3);
-    background: #70b1ff;
-    filter: brightness(1.1);
-}
-
-/* ############### Riepilogo (Colonna Desta Certifica) ############### */
-.summary-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.summary-item:last-child {
-    border-bottom: none;
-}
-
-.summary-label {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-}
-
-.summary-value {
-    color: var(--white);
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-/* ############### Elementi Interattivi (Bottoni E Modal) ############### */
-
-.info-btn {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    font-size: 0.85rem;
-    transition: all 0.2s ease;
-    border-radius: 6px;
-}
-
-.info-btn:hover {
-    background: var(--accent-glow);
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-.modal-content {
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    background-color: var(--card-bg);
-}
-
-.modal-header { border-bottom: 1px solid var(--border-color); }
-
-/* ############### Form E Input ############### */
-.form-control {
-    background-color: var(--input-bg) !important;
-    border: 1px solid var(--border-color) !important;
-    color: var(--white) !important;
-}
-
-.form-control:focus {
-    border-color: var(--accent-color) !important;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1) !important;
-}
-
-.upload-area {
-    border: 2px dashed var(--border-light); 
-    border-radius: 12px;
-    padding: 40px 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.upload-area:hover, .upload-area.drag-over {
-    border-color: var(--accent-color);
-    background-color: var(--hover-bg);
-}
-
-/* ############### Utility, Animazioni & Footer ############### */
-
-/* Pulse Animation */
-.pulse-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--success-color);
-    border-radius: 50%;
-    display: inline-block;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(35, 209, 96, 0.7);}
-    70% { box-shadow: 0 0 0 8px rgba(35, 209, 96, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(35, 209, 96, 0);}
-}
-
-.copy-toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: var(--success-color);
-    color: var(--white);
-    padding: 12px 24px;
-    border-radius: 8px;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-.copy-toast.show { opacity: 1; visibility: visible; transform: translateY(0); }
-
-.unipg-logo { height: 35px; width: auto; }
-
-/* Scrollbar Custom */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg-dark); }
-::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
-
-/* Responsività */
-@media (max-width: 768px) {
-    h1 { font-size: 2rem !important; }
-    .sidebar { width: 70px; }
-    .sidebar span { display: none; }
-    .sidebar .nav-link { justify-content: center; }
-    .status-indicator { position: static; margin-bottom: 1rem; text-align: center; }
+.custom-card::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 1rem;
 }

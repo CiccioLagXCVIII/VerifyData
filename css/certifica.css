@@ -1,0 +1,48 @@
+/* Area Drag & Drop */
+.upload-area {
+    border: 2px dashed var(--border-light);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: var(--accent-color);
+    background-color: var(--hover-bg);
+}
+
+/* Riepilogo Dettagli */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-label {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+.summary-value {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+/* Indicatori di Stato */
+.status-indicator {
+    background: var(--sidebar-bg);
+    padding: 5px 15px;
+    border: 1px solid var(--border-color);
+    font-size: 0.8rem;
+}
+
+#file-info code {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+}

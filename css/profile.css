@@ -1,0 +1,29 @@
+.table-dark {
+    background-color: transparent !important;
+}
+
+.table thead th {
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.table tbody td {
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+.alert-info {
+    background-color: var(--accent-glow);
+    border-color: var(--accent-color);
+    color: var(--white);
+}
+
+/* Badge Stato in Tabella */
+.badge-status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}

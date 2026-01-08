@@ -11,7 +11,7 @@ export const Profile = {
                   if (walletDisplay) {
                         walletDisplay.textContent = walletConnected;
                   }
-
+                  
                   // Verifica La Presenza Del Token Identità Soulbound
                   const identitySBT = localStorage.getItem('identitySBT');
 
