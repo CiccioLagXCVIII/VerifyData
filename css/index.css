@@ -1,6 +1,5 @@
-/* ############### Testata e Status ############### */
-.badge-project,
-.status-bar {
+/* ############### Badge ############### */
+.badge-project {
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-size: 0.7rem;
@@ -15,19 +14,9 @@
     color: var(--accent-color);
 }
 
-.status-bar {
-    background: var(--sidebar-bg);
-    border: 1px solid var(--border-color);
-    gap: 0.5rem;
-}
-
 /* ############### Titoli ############### */
 .display-title {
-    font-size: clamp(
-        1.5rem,
-        5vh,
-        2.5rem
-    ); /* Si ridimensiona in base all'altezza (vh) */
+    font-size: clamp(1.5rem, 5vh, 2.5rem); /* Si ridimensiona in base all'altezza (vh) */
     letter-spacing: -0.05rem;
     background: linear-gradient(to bottom, #fff, var(--accent-color));
     -webkit-background-clip: text;

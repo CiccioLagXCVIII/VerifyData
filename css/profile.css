@@ -1,50 +1,170 @@
-.table-dark {
-    background-color: transparent !important;
+/* ########## Layout Generale Dashboard Card ########## */
+
+/* Rimosso border da dashboard-container e creato dashboard-card per le singole sub-card */
+.dashboard-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.table thead th {
-    border-bottom: 2px solid var(--border-color);
+.dashboard-column-left {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* ########## Striscia Di Stato (Top Bar) ########## */
+
+.status-header {
+    height: 35px;
+    background: var(--sidebar-bg);
+}
+
+.status-control-strip {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    height: 100%;
+    gap: 0;
+    font-family: "Monaco", "Consolas", monospace;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+}
+
+.status-label {
     color: var(--text-muted);
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-value {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.status-divider {
+    width: 1px;
+    height: 14px;
+    background-color: var(--border-color);
+    opacity: 0.5;
+}
+
+/* ########## Sezione Wallet (Sinistra) ########## */
+
+.address-box {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-label-sm {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.wallet-address-text {
+    color: var(--white);
+    font-size: 0.9rem;
+    word-break: break-all;
+    background: rgba(88, 166, 255, 0.05);
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(88, 166, 255, 0.1);
+}
+
+.etherscan-btn {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.etherscan-btn:hover {
+    opacity: 1;
+    color: var(--white);
+    text-shadow: 0 0 8px var(--accent-color);
+}
+
+/* ########## Sezione SBT Identity (Destra) ########## */
+
+/* Rimosso border-left poiché ora la card è chiusa sui 4 lati */
+.sbt-details-column {
+    border-left: none;
+}
+
+.sbt-top-row {
+    height: 65%;
+}
+
+.sbt-info-list {
+    padding: 15px;
+    justify-content: center;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-row.no-border {
+    border-bottom: none;
+}
+
+.info-label {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.info-value {
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.trust-badge {
+    font-size: 0.65rem;
+    background: rgba(35, 209, 96, 0.1);
+    color: #23d160;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(35, 209, 96, 0.2);
     text-transform: uppercase;
 }
 
-.table tbody td {
-    border-bottom: 1px solid var(--border-color);
-    vertical-align: middle;
-    font-size: 0.9rem;
+/* ########## Hexagon Avatar Style ########## */
+
+.hex-container {
+    background: rgba(0, 0, 0, 0.1);
+    border-right: 1px solid var(--border-color); /* Aggiunto per separare avatar da info */
 }
 
-.alert-info {
-    background-color: var(--accent-glow);
-    border-color: var(--accent-color);
-    color: var(--white);
-}
-
-/* Badge Stato in Tabella */
-.badge-status {
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-}
-/* ########## Propic ########## */
-/* Bordo Esagono */
 .hex-border {
-    height: 90%;
-    aspect-ratio: 1 / 1.15;
+    width: 80px;
+    height: 90px;
     background-color: var(--accent-color);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    padding: auto;
+    filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.3));
 }
 
-/* Sfondo Esagono */
 .hex-fill {
-    width: 98%;
-    height: 98%;
+    width: 94%;
+    height: 94%;
     background-color: var(--card-bg);
     clip-path: inherit;
     display: flex;
@@ -52,8 +172,58 @@
     align-items: center;
 }
 
-/* Icona */
 .hex-fill i {
-    font-size: 5rem;
+    font-size: 2rem;
     color: var(--accent-color);
+}
+
+/* ########## Stats Footer (Bottom Bar) ########## */
+
+.stats-footer {
+    height: 35%;
+    border-top: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.stat-item {
+    padding: 10px;
+}
+
+.stat-label {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.stat-divider {
+    width: 1px;
+    margin: 10px 0;
+    background: var(--border-color);
+}
+
+/* ########## Animazioni & Feedback ########## */
+
+.pulse-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #23d160;
+    border-radius: 50%;
+    animation: simple-pulse 2s infinite;
+}
+
+@keyframes simple-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(35, 209, 96, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 0 8px rgba(35, 209, 96, 0);
+    }
 }

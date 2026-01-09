@@ -10,11 +10,12 @@ export const Auth = {
                 try {
                     // Richiede L'Accesso Agli Account Del Wallet
                     // Nota: Aggiunto 'await' per attendere la risposta dell'utente su MetaMask
+
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     const userAddress = accounts[0];
 
                     // Memorizza L'Indirizzo Localmente Per Gestire La Sessione
-                    localStorage.setItem('walletAddress', userAddress);
+                    localStorage.setItem('walletAddress', userAddress); ``
 
                     console.log("VerifyData: Connessione Effettuata ->", userAddress);
 

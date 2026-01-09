@@ -3,12 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Progetto - Form 1</title>
+        <title>VerifyData - Profilo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/profile.css" />
-        />
     </head>
     <body>
         <header class="app-header d-flex justify-content-between align-items-center px-4" id="navbar">
@@ -33,9 +32,7 @@
                 </nav>
 
                 <div class="sidebar-footer">
-                    <a href="https://github.com/CiccioLagXCVIII" target="_blank" class="github-link">
-                        <i class="bi bi-github me-2"></i> <span>GitHub</span>
-                    </a>
+                    <a href="https://github.com/CiccioLagXCVIII" target="_blank" class="github-link"> <i class="bi bi-github me-2"></i> <span>GitHub</span> </a>
                 </div>
             </aside>
 
@@ -53,38 +50,110 @@
 
                 <!-- Visibile Se Ha Identità -->
                 <div class="custom-card">
-                    <div class="d-flex flex-column h-100 p-0">
-                        <!-- PRIMA RIGA -->
-                        <div class="d-flex align-items-center justify-content-center" style="height: 40%">
-                            <!-- Colonna Wallet -->
-                            <div class="col-4 h-100 d-flex align-items-center justify-content-center" style="border: 2px solid blue">
-                                <strong>Indirizzo Wallet:</strong>
-                                <span id="walletAddressDisplay" class="font-monospace"></span>
+                    <div class="d-flex flex-column h-100 p-0" id="profileDashboard">
+                        <!-- AA PRIMA RIGA (Indirizzo Wallet + Badge Identità) -->
+                        <div id="profileData" class="d-flex align-items-center justify-content-between mb-3">
+                            <!-- SS Colonna Indirizzo Wallet (CARD 1) -->
+                            <div class="col-5 h-100 d-flex flex-column dashboard-card dashboard-column-left">
+                                <!-- NN Riga Indicatore Stato-->
+                                <div class="status-header">
+                                    <div class="status-control-strip">
+                                        <div class="status-item">
+                                            <span class="pulse-dot"></span>
+                                            <span class="status-label">Network:</span>
+                                            <span class="status-value text-white" id="networkDisplay">Sepolia Testnet</span>
+                                        </div>
+                                        <div class="status-divider"></div>
+                                        <div class="status-item">
+                                            <span class="status-label">Wallet:</span>
+                                            <span class="status-value text-white" id="walletBrand">MetaMask</span>
+                                        </div>
+                                        <div class="status-item ms-auto">
+                                            <span class="status-label">Status:</span>
+                                            <span class="status-value text-success" id="connectionStatus">Connected</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- NN Riga Indirizzo Wallet-->
+                                <div class="address-box flex-fill d-flex flex-column justify-content-center px-4">
+                                    <label class="data-label-sm">Indirizzo Wallet</label>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span id="walletAddressDisplay" class="font-monospace wallet-address-text flex-grow-1"></span>
+                                        <button id="copyAddressBtn" class="btn btn-outline-primary btn-sm rounded-circle">
+                                            <i class="bi bi-copy"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- NN Riga Link Etherscan Wallet-->
+                                <div class="etherscan-footer flex-fill d-flex align-items-center px-4">
+                                    <a id="etherscanLinkDisplay" class="etherscan-btn" target="_blank">
+                                        <i class="bi bi-box-arrow-up-right me-2"></i>Visualizza su Etherscan
+                                    </a>
+                                </div>
                             </div>
-                            <!-- Colonna Identità SBT -->
-                            <div class="col-5 h-100 d-flex ms-auto align-items-center justify-content-center" style="border: 2px solid red">
-                                <div class="d-flex flex-column w-100 h-100">
-                                    <!-- Riga 1 -->
-                                    <div class="d-flex" style="height: 70%">
-                                        <div class="col-5 h-100 d-flex align-items-center justify-content-center">
+
+                            <!-- SS Colonna Identità SBT (CARD 2) -->
+                            <div class="col-5 h-100 d-flex align-items-center justify-content-center dashboard-card">
+                                <div class="d-flex flex-column w-100 h-100 sbt-details-column">
+                                    <!-- Riga Icona + Info -->
+                                    <div class="d-flex sbt-top-row">
+                                        <!-- Colonna Icona Profilo -->
+                                        <div class="col-4 h-100 d-flex align-items-center justify-content-center p-0 hex-container">
                                             <div class="hex-border">
                                                 <div class="hex-fill">
-                                                    <i class="bi bi-shield-lock-fill"></i>
+                                                    <img
+                                                        id="userAvatar"
+                                                        src=""
+                                                        alt="Avatar"
+                                                        style="width: 70%; height: 70%; object-fit: contain; display: none" />
+                                                    <i id="userAvatarFallback" class="bi bi-person-fill"></i>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-7 h-100" style="border: 2px solid orange">Informazioni Identità</div>
+                                        <!-- Colonna Dettagli Identità -->
+                                        <div class="col-8 h-100 d-flex flex-column sbt-info-list">
+                                            <div class="info-row">
+                                                <span class="info-label">SBT Token ID</span>
+                                                <span id="sbtTokenIdDisplay" class="info-value font-monospace text-primary"></span>
+                                            </div>
+                                            <div class="info-row">
+                                                <span class="info-label">Data Emissione</span>
+                                                <span id="emissionDateDisplay" class="info-value"></span>
+                                            </div>
+                                            <div class="info-row">
+                                                <span class="info-label">Registry On</span>
+                                                <span id="registryNetDisplay" class="info-value"></span>
+                                            </div>
+                                            <div class="info-row no-border">
+                                                <span class="info-label">Trust Level</span>
+                                                <span id="trustLevelDisplay" class="trust-badge"></span>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <!-- Riga 2 -->
-                                    <div class="w-100" style="height: 30%; border: 2px solid yellow">Numero Documenti Certificati</div>
+                                    <!-- Riga Altre Informazioni (Stats Bar) -->
+                                    <div class="stats-footer w-100">
+                                        <div class="col-12 h-100 d-flex">
+                                            <div class="stat-item flex-fill d-flex flex-column justify-content-center align-items-center">
+                                                <span class="stat-label">Documenti Certificati</span>
+                                                <span id="numDocCertificatiDisplay" class="stat-value font-monospace"></span>
+                                            </div>
+                                            <div class="stat-divider"></div>
+                                            <div class="stat-item flex-fill d-flex flex-column justify-content-center align-items-center">
+                                                <span class="stat-label">Ultima Attività</span>
+                                                <span id="dataUltCertificaDisplay" class="stat-value font-monospace"></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- SECONDA RIGA -->
-                        <div class="flex-grow-1 d-flex align-items-center justify-content-center" style="border: 2px solid green">
-                            <div class="col d-flex align-items-center justify-content-center">Tabella</div>
+                        <!-- AA SECONDA RIGA (Tabella Documenti Certificati) -->
+                        <div class="flex-grow-1 d-flex align-items-center justify-content-center" style="border: 2px solid purple">
+                            <div id="tableData" class="col d-flex align-items-center justify-content-center" style="height: 40%">Tabella</div>
                         </div>
                     </div>
                 </div>
