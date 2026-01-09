@@ -1,100 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progetto - Form 1</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-    <header class="app-header d-flex justify-content-between align-items-center px-4" id="navbar">
-        <h5 class="mb-0 text-white">
-            <i class="bi bi-layers-half me-2 text-primary"></i>VerifyData
-        </h5>
-        <!-- Pulsante Accesso a destra -->
-        <div id="headerActions" class="d-flex align-items-center gap-2">
-            <!-- Nella Pagina Profilo Non Mostriamo Il Pulsante Di Connessione Perché L'Utente È Già Connesso -->
-            <!--
-            <a href="connessione.html" class="btn btn-outline-primary btn-sm rounded-pill" id="connectWalletBtn">
-                <i class="bi bi-wallet-fill"></i> Connetti Wallet
-            </a>
-            -->
-        </div>
-    </header>
-
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link">
-                    <i class="bi bi-house-door"></i> <span>Presentazione</span>
-                </a>
-                <a href="profilo.html" class="nav-link active">
-                    <i class="bi bi-person-vcard"></i> <span>Profilo SSI</span>
-                </a>
-                <a href="certifica.html" class="nav-link">
-                    <i class="bi bi-shield-check"></i> <span>Certifica Documento</span>
-                </a>
-                <a href="verifica.html" class="nav-link">
-                    <i class="bi bi-search"></i> <span>Verifica Pubblica</span>
-                </a>
-            </nav>
-
-            <div class="sidebar-footer">
-                <a href="https://github.com/CiccioLagXCVIII" target="blank" class="github-link">
-                    <i class="bi bi-github me-2"></i> <span>GitHub</span>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Progetto - Form 1</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/profile.css" />
+        />
+    </head>
+    <body>
+        <header class="app-header d-flex justify-content-between align-items-center px-4" id="navbar">
+            <h5 class="mb-0 text-white"><i class="bi bi-layers-half me-2 text-primary"></i>VerifyData</h5>
+            <!-- Pulsante Accesso a destra -->
+            <div id="headerActions" class="d-flex align-items-center gap-2">
+                <!-- Nella Pagina Profilo Non Mostriamo Il Pulsante Di Connessione Perché L'Utente È Già Connesso -->
+                <a href="connessione.html" class="btn btn-outline-primary btn-sm rounded-pill" id="connectWalletBtn">
+                    <i class="bi bi-wallet-fill"></i> Connetti Wallet
                 </a>
             </div>
-        </aside>
-        
-        <main class="content-area">
-            <!-- Card Richiesta: Visibile Se Non Ha Identità -->
-            <div class="custom-card" style="display: none;">
-                <div id="identityRequest">
-                    <h2 class="mb-4 text-center">Richiedi Identità Sovrana</h2>
-                    <p class="text-center">Per certificare documenti come utente verificato, devi richiedere il tuo Badge SBT.</p>
-                    <form id="mintSBTForm" class="text-center">
-                        <button type="submit" class="btn btn-primary">Minta il tuo Badge (SBT)</button>
-                    </form>
+        </header>
+
+        <div class="main-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link"> <i class="bi bi-house-door"></i> <span>Presentazione</span> </a>
+                    <a href="profilo.html" class="nav-link active"> <i class="bi bi-person-vcard"></i> <span>Profilo SSI</span> </a>
+                    <a href="certifica.html" class="nav-link"> <i class="bi bi-shield-check"></i> <span>Certifica Documento</span> </a>
+                    <a href="verifica.html" class="nav-link"> <i class="bi bi-search"></i> <span>Verifica Pubblica</span> </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <a href="https://github.com/CiccioLagXCVIII" target="_blank" class="github-link">
+                        <i class="bi bi-github me-2"></i> <span>GitHub</span>
+                    </a>
                 </div>
-            </div>
+            </aside>
 
-            <!-- Card Dati: nascosta di default -->
-            <div class="custom-card" style="display: none;">
-                <div id="profileData">
-                    <h2 class="mb-4 text-center">Dashboard Identità</h2>
-                    <div class="alert alert-info">
-                        <strong>Wallet:</strong> <span id="walletAddressDisplay" class="font-monospace"></span><br>
-                        <strong>Status:</strong> <span class="badge bg-success">Identità Verificata</span>
+            <main class="content-area" id="mainContent" style="visibility: hidden">
+                <!-- Visibile Se Non Ha Identità -->
+                <div class="custom-card" style="display: none">
+                    <div id="identityRequest">
+                        <h2 class="mb-4 text-center">Richiedi Identità Sovrana</h2>
+                        <p class="text-center">Per certificare documenti come utente verificato, devi richiedere il tuo Badge SBT.</p>
+                        <form id="mintSBTForm" class="text-center">
+                            <button type="submit" class="btn btn-primary">Minta il tuo Badge (SBT)</button>
+                        </form>
                     </div>
-                    
-                    <h4 class="mt-4">I Tuoi Documenti Certificati</h4>
-                    <table class="table table-dark table-hover mt-3">
-                        <thead>
-                            <tr>
-                                <th>Nome File</th>
-                                <th>Data</th>
-                                <th>Hash SHA-256</th>
-                                <th>Azione</th>
-                            </tr>
-                        </thead>
-                        <tbody id="documentsTable">
-                            <!-- Riga d'esempio simulata -->
-                            <tr>
-                                <td>Contratto_Affitto.pdf</td>
-                                <td>02/01/2026</td>
-                                <td><small>8f32...a12b</small></td>
-                                <td><button class="btn btn-danger btn-sm">Revoca</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
-            </div>
-        </main>
-    </div>  
-    <script type="module" src="js/app.js"></script>
-</body>
+
+                <!-- Visibile Se Ha Identità -->
+                <div class="custom-card">
+                    <div class="d-flex flex-column h-100 p-0">
+                        <!-- PRIMA RIGA -->
+                        <div class="d-flex align-items-center justify-content-center" style="height: 40%">
+                            <!-- Colonna Wallet -->
+                            <div class="col-4 h-100 d-flex align-items-center justify-content-center" style="border: 2px solid blue">
+                                <strong>Indirizzo Wallet:</strong>
+                                <span id="walletAddressDisplay" class="font-monospace"></span>
+                            </div>
+                            <!-- Colonna Identità SBT -->
+                            <div class="col-5 h-100 d-flex ms-auto align-items-center justify-content-center" style="border: 2px solid red">
+                                <div class="d-flex flex-column w-100 h-100">
+                                    <!-- Riga 1 -->
+                                    <div class="d-flex" style="height: 70%">
+                                        <div class="col-5 h-100 d-flex align-items-center justify-content-center">
+                                            <div class="hex-border">
+                                                <div class="hex-fill">
+                                                    <i class="bi bi-shield-lock-fill"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-7 h-100" style="border: 2px solid orange">Informazioni Identità</div>
+                                    </div>
+
+                                    <!-- Riga 2 -->
+                                    <div class="w-100" style="height: 30%; border: 2px solid yellow">Numero Documenti Certificati</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECONDA RIGA -->
+                        <div class="flex-grow-1 d-flex align-items-center justify-content-center" style="border: 2px solid green">
+                            <div class="col d-flex align-items-center justify-content-center">Tabella</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script type="module" src="js/app.js"></script>
+    </body>
 </html>

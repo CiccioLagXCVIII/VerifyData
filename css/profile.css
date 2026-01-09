@@ -27,3 +27,33 @@
     border-radius: 4px;
     font-size: 0.7rem;
 }
+/* ########## Propic ########## */
+/* Bordo Esagono */
+.hex-border {
+    height: 90%;
+    aspect-ratio: 1 / 1.15;
+    background-color: var(--accent-color);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: auto;
+}
+
+/* Sfondo Esagono */
+.hex-fill {
+    width: 98%;
+    height: 98%;
+    background-color: var(--card-bg);
+    clip-path: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Icona */
+.hex-fill i {
+    font-size: 5rem;
+    color: var(--accent-color);
+}

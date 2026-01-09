@@ -46,3 +46,27 @@
     border-radius: 5px;
     display: block;
 }
+.copy-toast {
+    visibility: hidden;
+    opacity: 0;
+
+    /* Posizionamento */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1050; /* Sopra Altri Elementi */
+
+    /* Aspetto */
+    background-color: var(--accent-color, #0d6efd);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    transition:
+        opacity 0.3s ease-in-out,
+        visibility 0.3s;
+}
+
+.copy-toast.show {
+    visibility: visible;
+    opacity: 1;
+}
